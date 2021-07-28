@@ -29,6 +29,10 @@
     "store"
   ],
   "author": "opium.pro",
+  "contributors": [
+    {"name": "Rodenstern", "url": "https://github.com/Rodenstern"},
+    {"name": "Denis Elianovsky", "url": "https://opium.pro/contacts/denis"}
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/opium-pro/master-hook/issues"
