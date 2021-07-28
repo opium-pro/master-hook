@@ -9,9 +9,9 @@ npm i master-hook
 ## Simple example
 
 app.jsx:
-```js
+```jsx
 import React from 'react'
-import MasterHook from 'master-hook
+import MasterHook from 'master-hook'
 
 export const App = ({children}) => (
   <MasterHook.Provider>
@@ -22,13 +22,13 @@ export const App = ({children}) => (
 
 hooks.js:
 ```js
-import MasterHook from 'master-hook
+import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
 ```
 
 and then you can use this hook
-```js
+```jsx
 import React from 'react'
 import { useMyHook } from './hooks.js'
 
@@ -55,8 +55,8 @@ To use actions, you need to add a name to your hook and pass actions
 
 hooks.js:
 ```js
-import MasterHook from 'master-hook
-import { myAction } from './actions
+import MasterHook from 'master-hook'
+import { myAction } from './actions'
 
 export const useMyHook = MasterHook({
   name: 'hook-n1',
@@ -69,7 +69,7 @@ And then you can address the needed hook by its mediator
 
 actions.js
 ```js
-import { getMediator } from 'master-hook
+import { getMediator } from 'master-hook'
 
 export function myAction = () => (dispatch) => {
   const mediator = getMediator('hook-n1')
@@ -86,9 +86,9 @@ export function myAction = () => (dispatch) => {
 
 hooks.js:
 ```js
-import MasterHook from 'master-hook
-import { mySelector } from './selectors
-import { myAction } from './actions
+import MasterHook from 'master-hook'
+import { mySelector } from './selectors'
+import { myAction } from './actions'
 
 export const useMyHook = MasterHook({
   name: 'hook-n1',
@@ -101,7 +101,7 @@ export const useMyHook = MasterHook({
 selectors.js
 ```js
 import { createSelector } from 'reselect'
-import { getMediator } from 'master-hook
+import { getMediator } from 'master-hook'
 
 export function mySelector = createSelector(
   getMediator('hook-n1').get.value,
@@ -115,7 +115,7 @@ export function mySelector = createSelector(
 
 ## Actions ans Selectors also available from the hook
 
-```js
+```jsx
 import React from 'react'
 import { useMyHook } from './hooks.js'
 
