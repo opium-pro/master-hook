@@ -1,0 +1,36 @@
+{
+  "name": "master-hook",
+  "version": "1.0.0",
+  "description": "Easy redux hooks with advanced option",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -fr ./dist && tsc"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.0.0",
+    "@types/react": "^17.0.13",
+    "@types/react-redux": "^7.1.16",
+    "typescript": "^4.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opium-pro/master-hook.git"
+  },
+  "keywords": [
+    "redux",
+    "hooks",
+    "react",
+    "store"
+  ],
+  "author": "opium.pro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/opium-pro/master-hook/issues"
+  }
+}
