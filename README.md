@@ -69,10 +69,10 @@ And then you can address the needed hook by its mediator
 
 actions.js
 ```js
-import { getMediator } from 'master-hook'
+import MasterHook from 'master-hook'
 
 export function myAction = () => (dispatch) => {
-  const mediator = getMediator('hook-n1')
+  const mediator = MasterHook.getMediator('hook-n1')
 
   // You can get values from the mediator
   const value = mediator.get.value
@@ -101,10 +101,10 @@ export const useMyHook = MasterHook({
 selectors.js
 ```js
 import { createSelector } from 'reselect'
-import { getMediator } from 'master-hook'
+import MasterHook from 'master-hook'
 
 export function mySelector = createSelector(
-  getMediator('hook-n1').get.value,
+  MasterHook.getMediator('hook-n1').get.value,
 
   (value) => {
     const newValue = value + 'opopop'
