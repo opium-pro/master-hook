@@ -30,7 +30,7 @@ export interface IMasterHook extends Func {
 
 let storeIndex = 0
 
-function Master({
+function MasterHook({
   name,
   initialState,
   actions,
@@ -41,7 +41,7 @@ function Master({
 
   !name && (name = 'master-hook-' + storeIndex++)
 
-  const mediator = Master.getMediator(name) || Master.createMediator(name, initialState || {})
+  const mediator = MasterHook.getMediator(name) || MasterHook.createMediator(name, initialState || {})
 
   !actions && makeActions && (actions = makeActions(mediator))
   !selectors && makeSelectors && (selectors = makeSelectors(mediator))
@@ -53,24 +53,24 @@ function Master({
   })
 }
 
-Master.reducers = {}
-Master.mediators = {}
-Master.store = undefined
+MasterHook.reducers = {}
+MasterHook.mediators = {}
+MasterHook.store = undefined
 
-Master.createMediator = (name, initialState) => {
+MasterHook.createMediator = (name, initialState) => {
   const mediator = getMediator(name, initialState)
-  Master.reducers[name] = mediator.reducer
-  Master.mediators[name] = mediator
+  MasterHook.reducers[name] = mediator.reducer
+  MasterHook.mediators[name] = mediator
   return mediator
 }
 
-Master.getReducer = () => combineReducers(Master.reducers)
+MasterHook.getReducer = () => combineReducers(MasterHook.reducers)
 
-Master.getStore = () => {
-  if (Master.store) { return Master.store }
+MasterHook.getStore = () => {
+  if (MasterHook.store) { return MasterHook.store }
 
-  const reducer = Master.getReducer()
-  const devTools = (window as any).devToolsExtension
+  const reducer = MasterHook.getReducer()
+  const devTools = (window as any)?.devToolsExtension
 
   return createStore(
     reducer,
@@ -81,14 +81,14 @@ Master.getStore = () => {
   )
 }
 
-Master.Provider = ({ children }) => (
-  <Provider store={Master.getStore()}>
+MasterHook.Provider = ({ children }) => (
+  <Provider store={MasterHook.getStore()}>
     {children}
   </Provider>
 )
 
-Master.getMediator = (name) => {
-  return Master.mediators[name]
+MasterHook.getMediator = (name) => {
+  return MasterHook.mediators[name]
 }
 
-export const MasterHook = Master as IMasterHook
+export default MasterHook as IMasterHook
