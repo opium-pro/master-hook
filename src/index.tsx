@@ -61,7 +61,7 @@ function MasterHook({
 
 MasterHook.reducers = {}
 MasterHook.mediators = {}
-MasterHook.store = {} as any
+MasterHook.store = undefined as any
 
 
 export const createStorage: IMasterHook['createStorage'] = (name, initialState) => {
@@ -125,14 +125,14 @@ export const useStorage: IMasterHook['useStorage'] = (storage) => {
 
   const {dispatch, getState} = MasterHook?.store
 
-  const result = {...mediator.get(getState())}
+  const result = {...mediator.get(getState?.())}
 
   Object.keys(mediator.set).forEach((key) => {
     const name = `set${key.charAt(0).toUpperCase() + key.slice(1)}`
-    result[name] = (...opts) => dispatch(mediator.set[key](...opts))
+    result[name] = (...opts) => dispatch?.(mediator.set[key](...opts))
   })
   Object.keys(mediator.actions).forEach((key) => {
-    result[key] = (...opts) => dispatch(mediator.actions[key](...opts))
+    result[key] = (...opts) => dispatch?.(mediator.actions[key](...opts))
   })
 
   return result
