@@ -4,7 +4,7 @@ import { useMediator } from './utils/use-mediator'
 import thunk from 'redux-thunk'
 import { combineReducers, createStore as reduxCreateStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
-import { createSelector } from 'reselect'
+import { createSelector as newSelector } from 'reselect'
 
 
 export interface MasterHookParams {
@@ -115,13 +115,13 @@ export const useStorage: IMasterHook['useStorage'] = (storage) => {
 MasterHook.useStorage = useStorage
 
 export const createAction: IMasterHook['createAction'] = (action) => (...params) => (dispatch) => {
-  action?.(...params)
+  action?.(...params, dispatch)
 }
 MasterHook.createAction = createAction
 
 
+export const createSelector: IMasterHook['createSelector'] = newSelector
 MasterHook.createSelector = createSelector
-export {createSelector}
 
 
 export default MasterHook as IMasterHook
