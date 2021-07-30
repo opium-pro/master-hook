@@ -24,7 +24,7 @@ export interface IMasterHook extends Func {
   getReducer: () => any
   getMediator: (name: string, initialState?: any) => any
   createStorage: (name: string, initialState: any) => any
-  createSelector: typeof createSelector,
+  createSelector: any,
   reducers: object
   mediators: object
   Provider: FC
