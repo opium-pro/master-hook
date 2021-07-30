@@ -17,7 +17,7 @@ export interface MasterHookParams {
 export type Func = (params: MasterHookParams) => any
 
 export interface IMasterHook extends Func {
-  getStorage: (storage: string) => any
+  useStorage: (storageName: string) => any
   getSelector: (storage: string, value?: string) => any
   createAction: any
   createStore: () => any
@@ -109,10 +109,10 @@ export const getSelector: IMasterHook['getSelector'] = (storage, value) => {
 MasterHook.getSelector = getSelector
 
 
-export const getStorage: IMasterHook['getStorage'] = (storage) => {
+export const useStorage: IMasterHook['useStorage'] = (storage) => {
   return useMediator(MasterHook.getMediator(storage))
 }
-MasterHook.getStorage = getStorage
+MasterHook.useStorage = useStorage
 
 export const createAction: IMasterHook['createAction'] = (action) => (...params) => (dispatch) => {
   action?.(...params)
