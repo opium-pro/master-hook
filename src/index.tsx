@@ -17,7 +17,7 @@ export interface MasterHookParams {
 export type Func = (params: MasterHookParams) => any
 
 export interface IMasterHook extends Func {
-  useStorage: (storageName: string, useDispatch?: boolean) => any
+  useStorage: (storageName: string) => any
   getStore: any
   getSelector: (storage: string, value?: string) => any
   createAction: any
