@@ -21,6 +21,7 @@ export const App = ({children}) => (
 ```
 
 hooks.js:
+
 > Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 ```js
 import MasterHook from 'master-hook'
@@ -66,16 +67,17 @@ export const useMyHook = MasterHook({
 })
 ```
 
-And then you can address the needed storage by its mediator
+And then you can address the needed storage by its hook.
+
+> No need to dispatch, it's already inside
 
 actions.js
 ```js
-import { createAction, getStogare } from 'master-hook'
+import { useStogare, createAction } from 'master-hook'
 
 export const myAction = createAction(() => {
-  const { value, setValue } = getStogare('hook-n1')
+  const { setValue } = useStogare('hook-n1')
 
-  // No need to dispatch, just call the setter
   setValue('new value')
 })
 ```
@@ -98,17 +100,17 @@ export const useMyHook = MasterHook({
 
 selectors.js
 ```js
-import { createSelector, getStorage } from 'master-hook'
+import { createSelector, useStogare } from 'master-hook'
 
 export const mySelector = createSelector(() => {
-    const { value } = getStogare('hook-n1')
+    const { value } = useStogare('hook-n1')
     const newValue = value + 'opopop'
     return newValue
   }
 )
 ```
 
-## Actions ans Selectors are also available from the hook
+## Actions ans Selectors are also available from your hook
 
 ```jsx
 import React from 'react'
