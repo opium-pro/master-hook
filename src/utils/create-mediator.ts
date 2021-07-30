@@ -106,7 +106,7 @@ export const createMediator = (name: string, initialState: {[key: string]: any})
       set,
       get,
       reducer: handleActions(handlers, initialState),
-      action: defaultActionCreators,
+      actions: defaultActionCreators,
       name
   }
 };

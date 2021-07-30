@@ -17,15 +17,17 @@ export interface MasterHookParams {
 export type Func = (params: MasterHookParams) => any
 
 export interface IMasterHook extends Func {
-  useStorage: (storageName: string) => any
+  useStorage: (storageName: string, useDispatch?: boolean) => any
+  getStore: any
   getSelector: (storage: string, value?: string) => any
   createAction: any
   createStore: () => any
   getReducer: () => any
   getMediator: (name: string, initialState?: any) => any
   createStorage: (name: string, initialState: any) => any
-  createSelector: any,
+  createSelector: any
   reducers: object
+  store: any
   mediators: object
   Provider: FC
 }
@@ -59,6 +61,7 @@ function MasterHook({
 
 MasterHook.reducers = {}
 MasterHook.mediators = {}
+MasterHook.store = {} as any
 
 
 export const createStorage: IMasterHook['createStorage'] = (name, initialState) => {
@@ -78,13 +81,17 @@ export const createStore: IMasterHook['createStore'] = () => {
   const reducer = MasterHook.getReducer()
   const devTools = (window as any)?.devToolsExtension
 
-  return reduxCreateStore(
+  const store = reduxCreateStore(
     reducer,
     compose(
       applyMiddleware(thunk),
       devTools ? devTools?.() : f => f
     )
   )
+
+  MasterHook.store = store
+
+  return store
 }
 MasterHook.createStore = createStore
 
@@ -109,15 +116,37 @@ export const getSelector: IMasterHook['getSelector'] = (storage, value) => {
 MasterHook.getSelector = getSelector
 
 
-export const useStorage: IMasterHook['useStorage'] = (storage) => {
-  return useMediator(MasterHook.getMediator(storage))
+export const useStorage: IMasterHook['useStorage'] = (storage, useDispatch = false) => {
+  const mediator = MasterHook.getMediator(storage)
+
+  if (useDispatch) {
+    return useMediator(mediator)
+  }
+
+  const {getState} = MasterHook?.store
+
+  const result = {...mediator.get(getState())}
+  Object.keys(mediator.set).forEach((key) => {
+    const name = `set${key.charAt(0).toUpperCase() + key.slice(1)}`
+    result[name] = mediator.set[key]
+  })
+  Object.keys(mediator.actions).forEach((key) => {
+    result[key] = mediator.actions[key]
+  })
+  return result
 }
 MasterHook.useStorage = useStorage
 
-export const createAction: IMasterHook['createAction'] = (action) => (...params) => (dispatch) => {
-  action?.(...params, dispatch)
+export const createAction: IMasterHook['createAction'] = (action) => (...params) => (dispatch, getState) => {
+  return action?.(params, dispatch, getState)
 }
 MasterHook.createAction = createAction
+
+
+export const getStore = () => {
+  return MasterHook.store
+}
+MasterHook.getStore = getStore
 
 
 export const createSelector: IMasterHook['createSelector'] = newSelector
