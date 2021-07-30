@@ -57,14 +57,16 @@ const actionCreator = (type: string, payloadCreator?: Function | Error) => {
   return actionCreatorHandler;
 };
 
-export const getMediator = (name: string, initialState: {[key: string]: any}) => {
+export const createMediator = (name: string, initialState: {[key: string]: any}) => {
   const keys = Object.keys(initialState);
 
   const set: any = keys.reduce(
-      (result, key: string) => ({
+      (result, key: string) => {
+          const actionName = `${name.toUpperCase()}_${key.toUpperCase()}`
+          return {
           ...result,
-          [key]: actionCreator(key.toUpperCase(), (value: any) => ({value}))
-      }),
+          [key]: actionCreator(actionName, (value: any) => ({value}))
+      }},
       {},
   )
 

@@ -1,6 +1,6 @@
 {
   "name": "master-hook",
-  "version": "1.0.2",
+  "version": "1.2.0",
   "description": "Easy redux hooks with advanced option",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "react": "^17.0.1",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "@types/node": "^16.0.0",
@@ -30,8 +31,14 @@
   ],
   "author": "opium.pro",
   "contributors": [
-    {"name": "Rodenstern", "url": "https://github.com/Rodenstern"},
-    {"name": "Denis Elianovsky", "url": "https://opium.pro/contacts/denis"}
+    {
+      "name": "Rodenstern",
+      "url": "https://github.com/Rodenstern"
+    },
+    {
+      "name": "Denis Elianovsky",
+      "url": "https://opium.pro/contacts/denis"
+    }
   ],
   "license": "MIT",
   "bugs": {

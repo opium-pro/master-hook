@@ -21,6 +21,7 @@ export const App = ({children}) => (
 ```
 
 hooks.js:
+> Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 ```js
 import MasterHook from 'master-hook'
 
@@ -51,7 +52,7 @@ export const Component = () => {
 
 ## Using Actions
 
-To use actions, you need to add a name to your hook and pass actions
+To use actions, you need to add a storage name to your hook and pass the actions
 
 hooks.js:
 ```js
@@ -59,27 +60,24 @@ import MasterHook from 'master-hook'
 import { myAction } from './actions'
 
 export const useMyHook = MasterHook({
-  name: 'hook-n1',
+  storage: 'hook-n1',
   actions: { myAction },
   initialState: { value: 'hoooook' },
 })
 ```
 
-And then you can address the needed hook by its mediator
+And then you can address the needed storage by its mediator
 
 actions.js
 ```js
-import MasterHook from 'master-hook'
+import { createAction, getStogare } from 'master-hook'
 
-export function myAction = () => (dispatch) => {
-  const mediator = MasterHook.getMediator('hook-n1')
+export const myAction = createAction(() => {
+  const { value, setValue } = getStogare('hook-n1')
 
-  // You can get values from the mediator
-  const value = mediator.get.value
-
-  // You can also set values via dispatch
-  dispatch(mediator.set.value('new value'))
-}
+  // No need to dispatch, just call the setter
+  setValue('new value')
+})
 ```
 
 ## Using Selectors
@@ -91,7 +89,7 @@ import { mySelector } from './selectors'
 import { myAction } from './actions'
 
 export const useMyHook = MasterHook({
-  name: 'hook-n1',
+  storage: 'hook-n1',
   selectors: { mySelector },
   actions: { myAction },
   initialState: { value: 'hoooook' },
@@ -100,20 +98,17 @@ export const useMyHook = MasterHook({
 
 selectors.js
 ```js
-import { createSelector } from 'reselect'
-import MasterHook from 'master-hook'
+import { createSelector, getStorage } from 'master-hook'
 
-export function mySelector = createSelector(
-  MasterHook.getMediator('hook-n1').get.value,
-
-  (value) => {
+export const mySelector = createSelector(() => {
+    const { value } = getStogare('hook-n1')
     const newValue = value + 'opopop'
     return newValue
   }
 )
 ```
 
-## Actions ans Selectors also available from the hook
+## Actions ans Selectors are also available from the hook
 
 ```jsx
 import React from 'react'
