@@ -78,6 +78,10 @@ MasterHook.getReducer = getReducer
 
 
 export const createStore: IMasterHook['createStore'] = () => {
+  if (MasterHook.store) {
+    return MasterHook.store
+  }
+
   const reducer = MasterHook.getReducer()
   const devTools = (window as any)?.devToolsExtension
 
