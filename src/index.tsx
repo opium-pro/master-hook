@@ -78,7 +78,7 @@ MasterHook.getReducer = getReducer
 
 
 export const createStore: IMasterHook['createStore'] = () => {
-  if (MasterHook.store) {
+  if (MasterHook.store && Object.keys(MasterHook.mediators).length) {
     return MasterHook.store
   }
 
