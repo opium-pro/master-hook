@@ -9,7 +9,6 @@ export type MasterHook = typeof constructor & typeof selectors & typeof storage 
 const MasterHook: MasterHook = (constructor as MasterHook)
 
 MasterHook.getSelector = selectors.getSelector
-MasterHook.createAction = selectors.createAction
 MasterHook.createSelector = selectors.createSelector
 MasterHook.useStorage = storage.useStorage
 MasterHook.getStorage = storage.getStorage

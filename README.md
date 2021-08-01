@@ -75,10 +75,11 @@ actions.js
 ```js
 import { useStogare } from 'master-hook'
 
-export const myAction = () => (dispatch) => {
-  const { setValue } = useStogare('hook-n1')
+export const myAction = () => (dispatch, getState) => {
+  // No need to use dispatch every time, just pass it once to useStogare
+  const { setValue } = useStogare('hook-n1', dispatch, getState)
 
-  dispatch(setValue('new value'))
+  setValue('new value')
 }
 ```
 

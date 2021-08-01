@@ -10,11 +10,4 @@ export function getSelector(storage: string) {
 }
 
 
-export function createAction(action: any) {
-  return (...params) => () => {
-    return action?.(...params)
-  }
-}
-
-
 export { createSelector } from 'reselect'

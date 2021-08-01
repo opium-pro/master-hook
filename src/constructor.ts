@@ -1,4 +1,4 @@
-import { useMediator } from './utils/use-mediator'
+import { makeHook } from './utils/make-hook'
 import { getMediator } from './storage'
 
 export interface MasterHookArgs {
@@ -30,7 +30,7 @@ export function constructor({
     mediator = getMediator(storage, initialState)
   }
 
-  return () => useMediator({
+  return () => makeHook({
     ...mediator,
     actions,
     selectors,

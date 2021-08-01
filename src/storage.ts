@@ -5,11 +5,11 @@ import { useMediator } from './utils/use-mediator'
 let storageIndex = 0
 
 
-export function useStorage (storage: string) {
+export function useStorage (storage: string, dispatch: any, getState?: any) {
   if (!storages[storage]) {
     console.error(`You address an unexisting storage: '${storage}'`)
   }
-  return storages[storage]?.()
+  return storages[storage]?.(dispatch, getState)
 }
 
 
@@ -19,7 +19,7 @@ export function getStorage (name: string, initialState = {}) {
   }
 
   const mediator = createMediator(name, initialState)
-  const storage = () => useMediator(mediator)
+  const storage = (dispatch?: any, getState?: any) => useMediator(mediator, dispatch, getState)
 
   reducers[name] = mediator.reducer
   mediators[name] = mediator
