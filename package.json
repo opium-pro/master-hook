@@ -4,7 +4,8 @@
   "description": "Easy redux hooks with advanced option",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rm -fr ./dist && tsc"
+    "build": "rm -fr ./dist && tsc",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "react": "^17.0.1",
