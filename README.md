@@ -5,6 +5,8 @@ With zero loss in functionality
 npm i master-hook
 ```
 
+### [Check out the playground](https://github.com/opium-pro/master-hook-playground)
+
 
 ## Simple example
 
