@@ -1,6 +1,6 @@
 {
   "name": "master-hook",
-  "version": "1.2.10",
+  "version": "1.2.11",
   "description": "Easy redux hooks with advanced option",
   "main": "dist/index.js",
   "scripts": {
