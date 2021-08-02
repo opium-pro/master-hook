@@ -1,19 +1,27 @@
-import { storages, reducers, mediators } from "./state"
+import { storages, reducers, mediators } from "./values"
 import { createMediator } from './utils/create-mediator'
 import { useMediator } from './utils/use-mediator'
+import { getStore } from './store'
 
 let storageIndex = 0
 
 
-export function useStorage (storage: string, dispatch: any, getState?: any) {
+export function useStorage(storage: string) {
   if (!storages[storage]) {
     console.error(`You address an unexisting storage: '${storage}'`)
+    return
   }
-  return storages[storage]?.(dispatch, getState)
+  const store = getStore()
+
+  if (!store) {
+    console.error(`There is no store for: '${storage}'`)
+    return
+  }
+  return storages[storage]?.(store.dispatch, store.getState)
 }
 
 
-export function getStorage (name: string, initialState = {}) {
+export function getStorage(name: string, initialState = {}) {
   if (storages[name]) {
     return storages[name]
   }
@@ -28,7 +36,7 @@ export function getStorage (name: string, initialState = {}) {
 }
 
 
-export function getMediator (storage: string, initialState?: any) {
+export function getMediator(storage: string, initialState?: any) {
   !storage && (storage = 'master-hook-' + storageIndex++)
 
   if (!mediators[storage]) {

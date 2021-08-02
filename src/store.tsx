@@ -1,5 +1,5 @@
 import React from 'react'
-import { reducers, mediators } from "./state"
+import { reducers, mediators } from "./values"
 import thunk from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
