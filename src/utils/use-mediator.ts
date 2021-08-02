@@ -1,9 +1,9 @@
 export interface IGettersAndSetters {
-  get: {[key: string]: (...a: any) => any}
-  set: {[key: string]: (...a: any) => any}
-  action: {[key: string]: (...a: any) => any}
-  actions?: {[key: string]: (...a: any) => any}
-  selectors?: {[key: string]: (...a: any) => any}
+  get: {[key: string]: any}
+  set: {[key: string]: any}
+  action: {[key: string]: any}
+  actions?: {[key: string]: any}
+  selectors?: {[key: string]: any}
 }
 
 export const useMediator = (
@@ -18,7 +18,7 @@ export const useMediator = (
   getState?: false | ((...a: any) => any),
   useSelector?: false | ((...a: any) => any),
 ) => {
-  const handlers: {[key: string]: (...a: any) => any} = {}
+  const handlers: {[key: string]: any} = {}
 
   getState && Object.keys(get).forEach(key => {
     handlers[key] = get[key](getState())
