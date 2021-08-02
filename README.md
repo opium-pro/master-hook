@@ -73,14 +73,16 @@ Then you can address a needed storage by its hook and dispatch an action.
 
 actions.js
 ```js
-import { useStorage } from 'master-hook'
+import { useStorage, createAction } from 'master-hook'
 
-export const myAction = () => (dispatch, getState) => {
-  // No need to use dispatch on actions from useStorage
+export const myAction = createAction(() => {
+  // No need to dispatch actions from 'useStorage'
+  // and actions, created by 'createAction'
+  // dispatch is already included
   const { setValue } = useStorage('hook-n1')
 
   setValue('new value')
-}
+})
 ```
 
 ## Using Selectors

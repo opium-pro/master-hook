@@ -2,6 +2,7 @@ import { storages, reducers, mediators } from "./values"
 import { createMediator } from './utils/create-mediator'
 import { useMediator } from './utils/use-mediator'
 import { getStore } from './store'
+import { Mediator } from './utils/create-mediator'
 
 let storageIndex = 0
 
@@ -38,7 +39,7 @@ export function getStorage(name: string, initialState = {}) {
 }
 
 
-export function getMediator(storage: string, initialState?: any) {
+export function getMediator(storage: string, initialState?: any): Mediator {
   !storage && (storage = 'master-hook-' + storageIndex++)
 
   if (!mediators[storage]) {
