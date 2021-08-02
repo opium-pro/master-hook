@@ -6,7 +6,7 @@ import { getStore } from './store'
 let storageIndex = 0
 
 
-export function useStorage(storage: string) {
+export function useStorage(storage: string, dispatch?: any, getState?: any) {
   if (!storages[storage]) {
     console.error(`You address an unexisting storage: '${storage}'`)
     return
@@ -17,7 +17,9 @@ export function useStorage(storage: string) {
     console.error(`There is no store for: '${storage}'`)
     return
   }
-  return storages[storage]?.(store.dispatch, store.getState)
+  const useDispatch = dispatch === undefined ? store.dispatch : dispatch
+  const useGetState = getState === undefined ? store.getState : getState
+  return storages[storage]?.(useDispatch, useGetState)
 }
 
 

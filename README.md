@@ -73,11 +73,11 @@ Then you can address a needed storage by its hook and dispatch an action.
 
 actions.js
 ```js
-import { useStogare } from 'master-hook'
+import { useStorage } from 'master-hook'
 
 export const myAction = () => (dispatch, getState) => {
-  // No need to use dispatch every time, just pass it once to useStogare
-  const { setValue } = useStogare('hook-n1', dispatch, getState)
+  // No need to use dispatch on actions from useStorage
+  const { setValue } = useStorage('hook-n1')
 
   setValue('new value')
 }
@@ -101,10 +101,10 @@ export const useMyHook = MasterHook({
 
 selectors.js
 ```js
-import { createSelector, useStogare } from 'master-hook'
+import { createSelector, useStorage } from 'master-hook'
 
 export const mySelector = createSelector(
-  () => useStogare('hook-n1').value,
+  () => useStorage('hook-n1').value,
 
   (value) => {
     const newValue = value + 'opopop'
