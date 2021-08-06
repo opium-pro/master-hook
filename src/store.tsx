@@ -1,8 +1,9 @@
-import React from 'react'
-import { storages } from "./storage"
+import React, { useEffect } from 'react'
+import { storages, useStorage } from "./storage"
 import thunk from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
+import { setFromCache } from './default-actions'
 
 let store = undefined
 
@@ -29,10 +30,19 @@ export function getStore() {
       devTools ? devTools?.() : f => f
     )
   )
+
   return store
 }
 
 
-export function Provider (props: any) {
-  return <ReduxProvider {...props} store={getStore()} />
+export function Provider({ children, ...props }: any) {
+  useEffect(() => {
+    setFromCache()
+  }, [])
+
+  return (
+    <ReduxProvider {...props} store={getStore()}>
+      {children}
+    </ReduxProvider>
+  )
 }

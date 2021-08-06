@@ -14,7 +14,9 @@ export function useStorage(name: string, subscribe?: boolean) {
     return undefined
   }
 
-  return subscribe ? useSubscribedMediator(mediator, name) : useMediator(mediator, name)
+  return subscribe
+    ? useSubscribedMediator(mediator, name)
+    : useMediator(mediator, name)
 }
 
 
@@ -25,19 +27,8 @@ export function createStorage(name: string, initialState = {}, cache?: { [key: s
     return storages[name]
   }
 
-  // if (cache) {
-  //   for (const key in cache) {
-  //     localStorage.getWithHeaders(`masterhook__${name}__${key}`).then((value) => {
-  //       const now = new Date().getTime()
-  //       const then = new Date(value?.timestamp).getTime()
-  //       if (!cache[key] || (then + cache[key] > now)) {
-  //         state[key] = value?.body
-  //       }
-  //     })
-  //   }
-  // }
-
-  const mediator = getMediator(name, initialState)
+  const mediator = getMediator(name, initialState, cache)
   storages[name] = mediator
+
   return mediator
 }
