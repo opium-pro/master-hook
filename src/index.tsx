@@ -4,25 +4,23 @@ import * as selectors from './selectors'
 import * as storage from './storage'
 import * as store from './store'
 import * as actions from './actions'
+import * as localStorage from './local-storage'
 
 export type MasterHook = typeof constructor
   & typeof selectors
   & typeof storage
   & typeof store
   & typeof actions
-
+  & typeof localStorage
 
 const MasterHook: MasterHook = (constructor as MasterHook)
 
-MasterHook.getSelector = selectors.getSelector
-MasterHook.createSelector = selectors.createSelector
-MasterHook.useStorage = storage.useStorage
-MasterHook.getStorage = storage.getStorage
-MasterHook.getMediator = storage.getMediator
-MasterHook.getReducer = store.getReducer
-MasterHook.getStore = store.getStore
-MasterHook.Provider = store.Provider
-MasterHook.createAction = actions.createAction
+Object.keys(selectors).forEach((key) => MasterHook[key] = selectors[key])
+Object.keys(storage).forEach((key) => MasterHook[key] = storage[key])
+Object.keys(store).forEach((key) => MasterHook[key] = store[key])
+Object.keys(actions).forEach((key) => MasterHook[key] = actions[key])
+Object.keys(localStorage).forEach((key) => MasterHook[key] = localStorage[key])
+
 
 export default MasterHook
 
@@ -30,3 +28,4 @@ export * from './selectors'
 export * from './storage'
 export * from './store'
 export * from './actions'
+export * from './local-storage'

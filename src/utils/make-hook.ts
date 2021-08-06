@@ -5,5 +5,5 @@ import { useMediator, IGettersAndSetters } from './use-mediator'
 export function makeHook(mediator: IGettersAndSetters) {
   const dispatch = useDispatch()
 
-  return useMediator(mediator, dispatch, false, useSelector)
+  return useMediator(mediator, {dispatch, useSelector})
 }

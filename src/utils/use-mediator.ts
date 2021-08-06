@@ -1,9 +1,17 @@
+
 export interface IGettersAndSetters {
-  get: {[key: string]: any}
-  set: {[key: string]: any}
-  action: {[key: string]: any}
-  actions?: {[key: string]: any}
-  selectors?: {[key: string]: any}
+  get: { [key: string]: any }
+  set: { [key: string]: any }
+  action: { [key: string]: any }
+  actions?: { [key: string]: any }
+  selectors?: { [key: string]: any }
+}
+
+export interface IMediatorOptions {
+  dispatch?: false | ((...a: any) => any),
+  getState?: false | ((...a: any) => any),
+  useSelector?: false | ((...a: any) => any),
+  setLocal?: (item: string, value: any) => any,
 }
 
 export const useMediator = (
@@ -14,11 +22,14 @@ export const useMediator = (
     actions = {},
     selectors = {},
   }: IGettersAndSetters,
-  dispatch?: false | ((...a: any) => any),
-  getState?: false | ((...a: any) => any),
-  useSelector?: false | ((...a: any) => any),
+  {
+    dispatch,
+    getState,
+    useSelector,
+    setLocal,
+  }: IMediatorOptions
 ) => {
-  const handlers: {[key: string]: any} = {}
+  const handlers: { [key: string]: any } = {}
 
   getState && Object.keys(get).forEach(key => {
     handlers[key] = get[key](getState())
@@ -37,8 +48,11 @@ export const useMediator = (
   })
 
   dispatch && Object.keys(set).forEach(key => {
-    const name = `set${key.charAt(0).toUpperCase() + key.slice(1)}`;
-    handlers[name] = (...args: any) => dispatch(set[key](...args))
+    const name = `set${key.charAt(0).toUpperCase() + key.slice(1)}`
+    handlers[name] = (...args: any) => {
+      getState && setLocal?.(key, get[key](getState()))
+      return dispatch(set[key](...args))
+    }
   })
 
   dispatch && Object.keys(action).forEach(key => {

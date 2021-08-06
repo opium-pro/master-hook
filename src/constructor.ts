@@ -4,9 +4,10 @@ import { combineMediators } from './utils/combine-mediators'
 
 export interface MasterHookArgs {
   storage?: string | string[],
-  actions?: any,
-  selectors?: any,
-  initialState?: any,
+  actions?: {[key: string]: any},
+  selectors?: {[key: string]: any},
+  initialState?: {[key: string]: any},
+  cache?: {[key: string]: number},
 }
 
 
@@ -15,11 +16,12 @@ export function constructor({
   initialState,
   actions,
   selectors,
+  cache,
 }: MasterHookArgs) {
 
   const mediator = Array.isArray(storage)
-    ? combineMediators(storage.map((storageName) => getMediator(storageName, initialState)))
-    : getMediator(storage, initialState)
+    ? combineMediators(storage.map((storageName) => getMediator(storageName, initialState, cache)))
+    : getMediator(storage, initialState, cache)
 
   return () => makeHook({
     ...mediator,

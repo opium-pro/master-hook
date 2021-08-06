@@ -65,8 +65,8 @@ const actionCreator = (type: string, payloadCreator?: Function | Error) => {
   return actionCreatorHandler;
 };
 
-export const createMediator = (name: string, initialState: {[key: string]: any}): Mediator => {
-  const keys = Object.keys(initialState);
+export const createMediator = (name: string, state: {[key: string]: any}, initialState: {[key: string]: any}): Mediator => {
+  const keys = Object.keys(state);
 
   const set: any = keys.reduce(
     (result, key: string) => {
@@ -80,7 +80,7 @@ export const createMediator = (name: string, initialState: {[key: string]: any})
 
   const get: any = (state: {[key: string]: [value: any]}) => {
     if (!state[name]) {
-      throw new Error(`State ${name} not found.`);
+      throw new Error(`MasterHook. State ${name} not found.`);
     }
 
     return state[name]
@@ -116,7 +116,7 @@ export const createMediator = (name: string, initialState: {[key: string]: any})
     set,
     get,
     action: defaultActionCreators,
-    reducer: handleActions(handlers, initialState),
+    reducer: handleActions(handlers, state),
     name,
   }
 };
