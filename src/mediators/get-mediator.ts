@@ -7,8 +7,8 @@ export interface Mediator {
   set: {[key: string]: any}
   get: {[key: string]: any}
   reducer: {[key: string]: any}
-  action: {[key: string]: any}
-  name: string
+  actions: {[key: string]: any}
+  initialState: {[key: string]: any}
 }
 
 type TAction = {
@@ -65,8 +65,8 @@ const actionCreator = (type: string, payloadCreator?: Function | Error) => {
   return actionCreatorHandler;
 };
 
-export const createMediator = (name: string, state: {[key: string]: any}, initialState: {[key: string]: any}): Mediator => {
-  const keys = Object.keys(state);
+export const getMediator = (name: string, initialState: {[key: string]: any}): Mediator => {
+  const keys = Object.keys(initialState);
 
   const set: any = keys.reduce(
     (result, key: string) => {
@@ -80,7 +80,7 @@ export const createMediator = (name: string, state: {[key: string]: any}, initia
 
   const get: any = (state: {[key: string]: [value: any]}) => {
     if (!state[name]) {
-      throw new Error(`MasterHook. State ${name} not found.`);
+      throw new Error(`MasterHook. State '${name}' not found.`);
     }
 
     return state[name]
@@ -115,8 +115,8 @@ export const createMediator = (name: string, state: {[key: string]: any}, initia
   return {
     set,
     get,
-    action: defaultActionCreators,
-    reducer: handleActions(handlers, state),
-    name,
+    actions: defaultActionCreators,
+    reducer: handleActions(handlers, initialState),
+    initialState,
   }
-};
+}

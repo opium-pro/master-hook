@@ -4,8 +4,10 @@
   "description": "Easy redux hooks with advanced option",
   "main": "dist/index.js",
   "scripts": {
+    "start": "nodemon -e ts,tsx -w ./src -x npm run dist",
     "build": "rm -fr ./dist && tsc",
-    "publish": "npm run build && npm publish"
+    "publish": "npm run build && npm publish",
+    "dist": "npm run build && rsync -a ./dist/ ../master-hook-playground/node_modules/master-hook/dist/"
   },
   "dependencies": {
     "react": "^17.0.1",
@@ -18,6 +20,7 @@
     "@types/node": "^16.0.0",
     "@types/react": "^17.0.13",
     "@types/react-redux": "^7.1.16",
+    "nodemon": "^2.0.12",
     "typescript": "^4.3.5"
   },
   "repository": {

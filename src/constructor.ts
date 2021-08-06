@@ -1,13 +1,13 @@
-import { makeHook } from './utils/make-hook'
-import { getMediator } from './storage'
-import { combineMediators } from './utils/combine-mediators'
+import { useStorage, createStorage } from './storage'
+import { useAction } from './actions'
+import { useSelector } from './selectors'
 
 export interface MasterHookArgs {
   storage?: string | string[],
-  actions?: {[key: string]: any},
-  selectors?: {[key: string]: any},
-  initialState?: {[key: string]: any},
-  cache?: {[key: string]: number},
+  actions?: { [key: string]: any },
+  selectors?: { [key: string]: any },
+  initialState?: { [key: string]: any },
+  cache?: { [key: string]: number },
 }
 
 
@@ -19,13 +19,43 @@ export function constructor({
   cache,
 }: MasterHookArgs) {
 
-  const mediator = Array.isArray(storage)
-    ? combineMediators(storage.map((storageName) => getMediator(storageName, initialState, cache)))
-    : getMediator(storage, initialState, cache)
+  Array.isArray(storage)
+    ? storage.forEach(name => createStorage(name, initialState, cache))
+    : createStorage(storage, initialState, cache)
 
-  return () => makeHook({
-    ...mediator,
-    actions,
-    selectors,
+
+  const useStorages = () => {
+    let result = {}
+    if (Array.isArray(storage)) {
+      storage.forEach(name => {
+        result[name] = useStorage(name, true)
+      })
+    } else {
+      result = useStorage(storage, true)
+    }
+    return result
+  }
+
+  const useActions = () => {
+    const result = {}
+    Object.keys(actions).forEach(key => {
+      result[key] = useAction(actions[key])
+    })
+    return result
+  }
+
+  const useSelectors = () => {
+    const result = {}
+    Object.keys(selectors).forEach(key => {
+      result[key] = useSelector(selectors[key])
+    })
+    
+    return result
+  }
+
+  return () => ({
+    ...useStorages(),
+    ...useActions(),
+    ...useSelectors(),
   })
 }

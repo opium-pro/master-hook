@@ -7,7 +7,7 @@ export function setDefaultLocalStorage(localStorage) {
 
 
 function errorHandler(err: any) {
-  console.error('MasterHook localStorage error: ', err)
+  console.error('MasterHook. LocalStorage error: ', err)
 }
 
 
