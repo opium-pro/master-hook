@@ -1,6 +1,6 @@
 import { createAction } from './actions'
-import { useStorage, storages } from './storage'
-import { localStorage } from './local-storage'
+import { useStorage, storages } from '../storage'
+import { localStorage } from '../local-storage'
 
 
 export const setFromCache = createAction(async () => {

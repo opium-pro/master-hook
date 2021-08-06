@@ -29,6 +29,6 @@ export default MasterHook
 export * from './selectors'
 export * from './storage'
 export * from './store'
-export * from './actions'
+export * from './actions/actions'
 export * from './local-storage'
 export * from './mediators'

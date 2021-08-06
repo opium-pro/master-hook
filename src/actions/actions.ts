@@ -1,5 +1,5 @@
-import { getStore } from './store'
-import { useMediator } from './mediators'
+import { getStore } from '../store'
+import { useMediator } from '../mediators'
 
 
 export function createAction(action) {

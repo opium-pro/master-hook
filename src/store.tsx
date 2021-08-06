@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { storages, useStorage } from "./storage"
+import { storages } from "./storage"
 import thunk from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
-import { setFromCache } from './default-actions'
+import { setFromCache } from './actions'
 
 let store = undefined
 
