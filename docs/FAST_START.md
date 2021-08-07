@@ -47,7 +47,6 @@ export const Component = () => {
 
 ## See more:
 
-* [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
