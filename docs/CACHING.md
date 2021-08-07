@@ -4,8 +4,6 @@
 
 Just pass `cache` to MasterHook and specify how long values have to be stored in milliseconds. `0` means forever.
 
-> Cache is being updated every time you update the stogare. So it's always fresh!
-
 hooks.js:
 
 ```js
@@ -16,11 +14,12 @@ export const useMyHook = MasterHook({
   cache: {value: 0}
 })
 ```
+> Cache is being updated every time you update the stogare. So it's always fresh!
 
 Done! That's all. Now your value in saved and being regulary updated in localStorage
 
 
-# Change caching storage
+## Change caching storage
 
 By default we use `window.localStorage` to cache values. But if you want to use some different storage, it's not a problem.
 
@@ -52,5 +51,5 @@ export const useMyHook = MasterHook({
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
 * [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
-===
+---
 [Playground](https://github.com/opium-pro/master-hook-playground)
