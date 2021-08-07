@@ -2,18 +2,7 @@
 
 # Using Selectors
 
-hooks.js:
-```js
-import MasterHook from 'master-hook'
-import { mySelector } from './selectors'
-
-export const useMyHook = MasterHook({
-  storage: 'hook-n1',
-  selectors: { mySelector },
-  initialState: { value: 'hoooook' },
-})
-```
-
+## 1. Create selectors
 selectors.js
 ```js
 import { createSelector, useStorage } from 'master-hook'
@@ -28,8 +17,20 @@ export const mySelector = createSelector(
 )
 ```
 
+## 2. Pass selectors to hooks
+hooks.js:
+```js
+import MasterHook from 'master-hook'
+import { mySelector } from './selectors'
 
-## Selectors are available from your hook
+export const useMyHook = MasterHook({
+  storage: 'hook-n1',
+  selectors: { mySelector },
+  initialState: { value: 'hoooook' },
+})
+```
+
+## 3. Get selectors from the hooks
 
 ```jsx
 import React from 'react'

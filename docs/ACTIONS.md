@@ -2,21 +2,8 @@
 
 # Using Actions
 
-To use actions, you need to add a storage name to your hook and pass the actions
 
-hooks.js:
-```js
-import MasterHook from 'master-hook'
-import { myAction } from './actions'
-
-export const useMyHook = MasterHook({
-  storage: 'hook-n1',
-  actions: { myAction },
-  initialState: { value: 'hoooook' },
-})
-```
-
-Then you can address a needed storage by its hook and dispatch an action.
+## 1. Create actions
 
 actions.js
 ```js
@@ -32,8 +19,26 @@ export const myAction = createAction(() => {
 })
 ```
 
+## 2. Pass actions to the hook
+You can also pass one action to multiple hooks
 
-## Actions ans Selectors are also available from your hook
+hooks.js:
+```js
+import MasterHook from 'master-hook'
+import { myAction } from './actions'
+
+export const useMyHook = MasterHook({
+  storage: 'hook-n1',
+  actions: { myAction },
+  initialState: { value: 'hoooook' },
+})
+```
+> You also need to specify the name of the storage
+
+
+## 3. Get you actions from the hook
+Actually, you can also use your actions directly.
+Bot hooks are fun)
 
 ```jsx
 import React from 'react'
