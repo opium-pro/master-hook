@@ -1,5 +1,5 @@
 [<<< to the main page](https://github.com/opium-pro/master-hook)
-
+---
 # Caching
 
 Just pass `cache` to MasterHook and specify how long the values have to be stored in milliseconds. `0` means forever.
@@ -49,4 +49,4 @@ export const useMyHook = MasterHook({
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
 ---
-[Playground](https://github.com/opium-pro/master-hook-playground)
+[Playground repo](https://github.com/opium-pro/master-hook-playground)

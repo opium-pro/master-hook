@@ -1,5 +1,5 @@
 [<<< to the main page](https://github.com/opium-pro/master-hook)
-
+---
 # Autoset 'isLoading'
 
 You can make a stoge automatically set `isLoading: true` when the action is in process.
@@ -29,4 +29,4 @@ That's all. Now storages 'storage-n1' and 'storage-n2' will have `isLoading: tru
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
 ---
-[Playground](https://github.com/opium-pro/master-hook-playground)
+[Playground repo](https://github.com/opium-pro/master-hook-playground)
