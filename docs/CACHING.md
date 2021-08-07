@@ -27,7 +27,7 @@ Cached data are being used unly when the app is launching to display the data im
 
 By default we use `window.localStorage` to cache values. But if you want to use some different storage, it's not a problem.
 
-You may need this for `React Navive`. Just pass `MasterHook.setLocalStorage`
+You may need this for `React Native`. Just pass `MasterHook.setLocalStorage`
 
 hooks.js:
 
