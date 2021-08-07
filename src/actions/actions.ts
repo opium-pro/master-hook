@@ -1,5 +1,5 @@
 import { useMediator } from '../mediators'
-import { setIsLoading } from './common-actions'
+import { setIsPending } from './common-actions'
 
 
 export const actions = {}
@@ -7,8 +7,8 @@ export const actions = {}
 
 export function force(calledAction) {
   if (calledAction.type === '__MASTERHOOK_STOP_EXECUTION__') {
-    const { action, args, setIsLoadingTo } = calledAction
-    return execute(action, args, setIsLoadingTo)(true)
+    const { action, args, setIsPendingTo } = calledAction
+    return execute(action, args, setIsPendingTo)(true)
   } else {
     return calledAction
   }
@@ -51,26 +51,26 @@ export function createAction(action, ...options: ActionOptions[]) {
 }
 
 
-function execute(action, args, setIsLoadingTo) {
+function execute(action, args, setIsPendingTo) {
   return (canExecute) => {
     if (!canExecute) {
       return {
         type: '__MASTERHOOK_STOP_EXECUTION__',
         action,
         args,
-        setIsLoadingTo
+        setIsPendingTo,
       }
     }
 
     const actionResult = action(...args)
 
-    if (actionResult instanceof Promise && setIsLoadingTo) {
-      setIsLoading(true, setIsLoadingTo)
+    if (actionResult instanceof Promise && setIsPendingTo) {
+      setIsPending(true, setIsPendingTo)
       return actionResult.then((result) => {
         actions[action].timestamp = new Date().getTime()
         return result
       }).finally(() => {
-        setIsLoading(false, setIsLoadingTo)
+        setIsPending(false, setIsPendingTo)
       })
     } else {
       return actionResult

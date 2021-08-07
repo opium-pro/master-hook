@@ -2,10 +2,10 @@ import { useStorage, storages } from '../storage'
 import { localStorage } from '../local-storage'
 
 
-export function setIsLoading(value, storeNames) {
+export function setIsPending(value, storeNames) {
   for (const storageName of storeNames) {
-    const { setIsLoading } = useStorage(storageName)
-    setIsLoading(value)
+    const { setIsPending } = useStorage(storageName)
+    setIsPending(value)
   }
 }
 

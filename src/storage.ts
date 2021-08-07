@@ -31,7 +31,7 @@ export function getStorage(name) {
 export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
   const defaultState = {
-    isLoading: false,
+    isPending: false,
   }
 
   if (storages[name]) {
