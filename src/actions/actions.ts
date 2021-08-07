@@ -17,17 +17,17 @@ export function force(calledAction) {
 
 export type ActionOptions = {
   setIsLoading?: string[] | string,
-  cache?: number,
+  timeout?: number,
 } | number | string | string[]
 
 
 
 export function createAction(action, ...options: ActionOptions[]) {
   let setIsLoading: string[]
-  let cache: number
+  let timeout: number
 
   options?.forEach(function normalizeOptions(option) {
-    typeof option === 'number' && (cache = option)
+    typeof option === 'number' && (timeout = option)
     typeof option === 'string' && (setIsLoading = [option])
     Array.isArray(option) && (setIsLoading = option)
     if (option instanceof Object) {
@@ -35,14 +35,14 @@ export function createAction(action, ...options: ActionOptions[]) {
     }
   })
 
-  actions[action] = { setIsLoading, cache, timestamp: undefined }
+  actions[action] = { setIsLoading, timeout, timestamp: undefined }
 
   return function __masterHookAction__(...args: any) {
     const now = new Date().getTime()
     let canExecute = true
     const { timestamp } = actions[action]
 
-    if (cache && timestamp && (cache === 0 || timestamp + cache > now)) {
+    if (timeout && timestamp && (timeout === 0 || timestamp + timeout > now)) {
       canExecute = false
     }
 
