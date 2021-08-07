@@ -15,7 +15,7 @@ export const useMyHook = MasterHook({
 })
 ```
 
-## Chaching is smart!
+## Caching is smart!
 
 Cache is being updated every time you update the storage. So it's always fresh!
 Cached data are being used unly when the app is launching to display the data immediately with no need to wait server responce. 
@@ -23,7 +23,7 @@ Cached data are being used unly when the app is launching to display the data im
 > If server did't response and you want your user to continue using cached data, just don't update cached values in your MasterHook storage
 
 
-## Change caching storage
+## Cange caching storage
 
 By default we use `window.localStorage` to cache values. But if you want to use some different storage, it's not a problem.
 
