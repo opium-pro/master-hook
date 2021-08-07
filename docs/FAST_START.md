@@ -2,6 +2,7 @@
 
 # Fast start
 
+## 1. Wrap the app in a Provider
 app.jsx:
 ```jsx
 import React from 'react'
@@ -14,6 +15,7 @@ export const App = ({children}) => (
 )
 ```
 
+## 2. Create hooks
 hooks.js:
 ```js
 import MasterHook from 'master-hook'
@@ -22,7 +24,7 @@ export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
 ```
 > Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 
-and then you can use this hook
+## 3. Use hooks
 ```jsx
 import React from 'react'
 import { useMyHook } from './hooks.js'
