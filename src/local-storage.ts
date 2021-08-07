@@ -1,7 +1,7 @@
 export let defaultLocalStorage = window?.localStorage
 
 
-export function setDefaultLocalStorage(localStorage) {
+export function setLocalStorage(localStorage) {
   defaultLocalStorage = localStorage
 }
 

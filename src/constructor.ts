@@ -53,7 +53,7 @@ export function constructor({
     return result
   }
 
-  return () => ({
+  return (): any => ({
     ...useStorages(),
     ...useActions(),
     ...useSelectors(),

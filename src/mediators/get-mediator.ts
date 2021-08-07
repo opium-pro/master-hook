@@ -4,15 +4,15 @@ import { actionCreator, handleActions } from './action-creator'
 export interface Mediator {
   set: { [key: string]: any }
   get: { [key: string]: any }
-  reducer: { [key: string]: any }
+  reducer?: { [key: string]: any }
   actions: { [key: string]: any }
-  initialState: { [key: string]: any }
-  cache: { [key: string]: any }
+  initialState?: { [key: string]: any }
+  cache?: { [key: string]: any }
   name: string
 }
 
 
-export const getMediator = (name: string, initialState: { [key: string]: any }, cache: { [key: string]: any }): Mediator => {
+export function getMediator (name: string, initialState?: { [key: string]: any }, cache?: { [key: string]: any }): Mediator {
   const keys = Object.keys(initialState)
 
   const set: any = keys.reduce(

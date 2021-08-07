@@ -13,6 +13,7 @@ export type MasterHook = typeof constructor
   & typeof store
   & typeof actions
   & typeof localStorage
+  & typeof mediators
 
 const MasterHook: MasterHook = (constructor as MasterHook)
 
