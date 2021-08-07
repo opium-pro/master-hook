@@ -2,7 +2,7 @@
 
 # Fast start
 
-## 1. Wrap the app in a Provider
+## 1. Wrap the app with a Provider
 app.jsx:
 ```jsx
 import React from 'react'
