@@ -7,7 +7,7 @@ export interface MasterHookArgs {
   actions?: { [key: string]: any },
   selectors?: { [key: string]: any },
   initialState?: { [key: string]: any },
-  cache?: { [key: string]: number },
+  stash?: { [key: string]: number },
 }
 
 
@@ -16,12 +16,12 @@ export function constructor({
   initialState,
   actions,
   selectors,
-  cache,
+  stash,
 }: MasterHookArgs) {
 
   Array.isArray(storage)
-    ? storage.forEach(name => createStorage(name, initialState, cache))
-    : createStorage(storage, initialState, cache)
+    ? storage.forEach(name => createStorage(name, initialState, stash))
+    : createStorage(storage, initialState, stash)
 
 
   const useStorages = () => {

@@ -3,7 +3,7 @@ import { storages } from "./storage"
 import thunk from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
-import { setFromCache } from './actions'
+import { unstash } from './actions'
 
 let store = undefined
 
@@ -37,7 +37,7 @@ export function getStore() {
 
 export function Provider({ children, ...props }: any) {
   useEffect(() => {
-    setFromCache()
+    unstash()
   }, [])
 
   return (
