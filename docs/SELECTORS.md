@@ -1,4 +1,4 @@
-[<<< go back](https://github.com/opium-pro/master-hook)
+[<<< to the main page](https://github.com/opium-pro/master-hook)
 
 # Using Selectors
 
@@ -37,7 +37,7 @@ import React from 'react'
 import { useMyHook } from './hooks.js'
 
 export const Component = () => {
-  const {mySelector} = useMyHook()
+  const { mySelector } = useMyHook()
 
   return (
     <div onClick={handleClick}>

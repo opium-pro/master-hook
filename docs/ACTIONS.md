@@ -1,4 +1,4 @@
-[<<< go back](https://github.com/opium-pro/master-hook)
+[<<< to the main page](https://github.com/opium-pro/master-hook)
 
 # Using Actions
 
@@ -38,15 +38,14 @@ export const useMyHook = MasterHook({
 
 ## 3. Get you actions from the hook
 Actually, you can also use your actions directly.
-Bot hooks are fun)
+But hooks are fun)
 
 ```jsx
 import React from 'react'
 import { useMyHook } from './hooks.js'
 
 export const Component = () => {
-  // all the setters are being created automatically
-  const {value, setValue, myAction} = useMyHook()
+  const {value, myAction} = useMyHook()
 
   function handleClick() {
     myAction('updated')

@@ -1,8 +1,8 @@
-[<<< go back](https://github.com/opium-pro/master-hook)
+[<<< to the main page](https://github.com/opium-pro/master-hook)
 
 # Caching
 
-Just pass `cache` to MasterHook and specify how long values have to be stored in milliseconds. `0` means forever.
+Just pass `cache` to MasterHook and specify how long the values have to be stored in milliseconds. `0` means forever.
 
 hooks.js:
 
@@ -14,16 +14,14 @@ export const useMyHook = MasterHook({
   cache: {value: 0}
 })
 ```
-> Cache is being updated every time you update the stogare. So it's always fresh!
-
-Done! That's all. Now your value in saved and being regulary updated in localStorage
+> Cache is being updated every time you update the storage. So it's always fresh!
 
 
 ## Change caching storage
 
 By default we use `window.localStorage` to cache values. But if you want to use some different storage, it's not a problem.
 
-You may need this for React Navive. Just pass `MasterHook.setLocalStorage`
+You may need this for `React Navive`. Just pass `MasterHook.setLocalStorage`
 
 hooks.js:
 

@@ -1,4 +1,4 @@
-[<<< go back](https://github.com/opium-pro/master-hook)
+[<<< to the main page](https://github.com/opium-pro/master-hook)
 
 # Autoset 'isLoading'
 
