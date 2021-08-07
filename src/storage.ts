@@ -19,6 +19,15 @@ export function useStorage(name: string, subscribe?: boolean) {
 }
 
 
+export function getStorage(name) {
+  if (!storages[name]) {
+    console.error(`MasterHook. Storage you ask does not exist: ${name}`)
+  }
+
+  return storages[name]
+}
+
+
 export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
   const defaultState = {
