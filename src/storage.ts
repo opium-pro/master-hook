@@ -20,14 +20,17 @@ export function useStorage(name: string, subscribe?: boolean) {
 }
 
 
-export function createStorage(name: string, initialState = {}, cache?: { [key: string]: number }) {
+export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
+  const defaultState = {
+    isLoading: false,
+  }
 
   if (storages[name]) {
     return storages[name]
   }
 
-  const mediator = getMediator(name, initialState, cache)
+  const mediator = getMediator(name, {...defaultState, ...initialState}, cache)
   storages[name] = mediator
 
   return mediator

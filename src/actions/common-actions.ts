@@ -1,9 +1,16 @@
-import { createAction } from './actions'
 import { useStorage, storages } from '../storage'
 import { localStorage } from '../local-storage'
 
 
-export const setFromCache = createAction(async () => {
+export function setIsLoading(value, storeNames) {
+  for (const storageName of storeNames) {
+    const { setIsLoading } = useStorage(storageName)
+    setIsLoading(value)
+  }
+}
+
+
+export async function setFromCache() {
   for (const key in storages) {
     const { cache, name } = storages[key]
     const { patch } = useStorage(name)
@@ -21,5 +28,4 @@ export const setFromCache = createAction(async () => {
       patch(cachedState)
     }
   }
-
-})
+}

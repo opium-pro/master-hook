@@ -1,12 +1,21 @@
-import { getStore } from '../store'
 import { useMediator } from '../mediators'
+import { setIsLoading } from './common-actions'
 
 
-export function createAction(action) {
+export function createAction(action, setIsLoadingTo?: string[]) {
   return function __masterHookAction__(...args: any) {
-    const store = getStore()
-    const dispatch = store?.dispatch
-    return dispatch(() => action(...args))
+      const actionResult = action(...args)
+
+      if (actionResult instanceof Promise && setIsLoadingTo) {
+        setIsLoading(true, setIsLoadingTo)
+        return actionResult.then((result) => {
+          return result
+        }).finally(() => {
+          setIsLoading(false, setIsLoadingTo)
+        })
+      } else {
+        return actionResult
+      }
   }
 }
 
@@ -18,6 +27,6 @@ export function useAction(action) {
     // so we don't need to dispatch it
     return action
   } else {
-    return useMediator({actions: {action}})[action]
+    return useMediator({ actions: { action } })[action]
   }
 }
