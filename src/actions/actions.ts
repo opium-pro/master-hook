@@ -27,6 +27,6 @@ export function useAction(action) {
     // so we don't need to dispatch it
     return action
   } else {
-    return useMediator({ actions: { action } })[action]
+    return useMediator({ actions: { action } }).action
   }
 }

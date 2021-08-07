@@ -1,4 +1,3 @@
-import { localStorage } from './local-storage'
 import { getMediator, useMediator } from './mediators'
 import { useSubscribedMediator } from './mediators'
 

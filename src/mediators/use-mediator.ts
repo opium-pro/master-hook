@@ -19,7 +19,7 @@ export function useSubscribedMediator(mediator, storageName?: string) {
 export function useMediator({
   get,
   set,
-  actions
+  actions,
 }: {
   get?: { [key: string]: any }
   set?: { [key: string]: any }
