@@ -1,5 +1,5 @@
 [<<< to the main page](https://github.com/opium-pro/master-hook)
----
+
 # Using Actions
 
 
@@ -66,4 +66,4 @@ export const Component = () => {
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
 * [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
 ---
-[Playground repo](https://github.com/opium-pro/master-hook-playground)
+[Playground repo >>>](https://github.com/opium-pro/master-hook-playground)
