@@ -16,37 +16,37 @@ export function force(calledAction) {
 
 
 export type ActionOptions = {
-  setIsLoading?: string[] | string,
-  timeout?: number,
+  setIsPendingTo?: string[] | string,
+  canRepeatIn?: number,
 } | number | string | string[]
 
 
 
 export function createAction(action, ...options: ActionOptions[]) {
-  let setIsLoading: string[]
-  let timeout: number
+  let setIsPendingTo: string[]
+  let canRepeatIn: number
 
   options?.forEach(function normalizeOptions(option) {
-    typeof option === 'number' && (timeout = option)
-    typeof option === 'string' && (setIsLoading = [option])
-    Array.isArray(option) && (setIsLoading = option)
+    typeof option === 'number' && (canRepeatIn = option)
+    typeof option === 'string' && (setIsPendingTo = [option])
+    Array.isArray(option) && (setIsPendingTo = option)
     if (option instanceof Object) {
       Object.values(option).forEach(normalizeOptions)
     }
   })
 
-  actions[action] = { setIsLoading, timeout, timestamp: undefined }
+  actions[action] = { setIsPendingTo, canRepeatIn, timestamp: undefined }
 
   return function __masterHookAction__(...args: any) {
     const now = new Date().getTime()
     let canExecute = true
     const { timestamp } = actions[action]
 
-    if (timeout && timestamp && (timeout === 0 || timestamp + timeout > now)) {
+    if (canRepeatIn && timestamp && (canRepeatIn === 0 || timestamp + canRepeatIn > now)) {
       canExecute = false
     }
 
-    return execute(action, args, setIsLoading)(canExecute)
+    return execute(action, args, setIsPendingTo)(canExecute)
   }
 }
 
