@@ -8,7 +8,6 @@ export const actions = {}
 export function force(calledAction) {
   if (calledAction.type === '__MASTERHOOK_STOP_EXECUTION__') {
     const { action, args, setIsLoadingTo } = calledAction
-    actions[action].timestamp = new Date().getTime()
     return execute(action, args, setIsLoadingTo)(true)
   } else {
     return calledAction
@@ -47,7 +46,6 @@ export function createAction(action, ...options: ActionOptions[]) {
       canExecute = false
     }
 
-    canExecute && (actions[action].timestamp = now)
     return execute(action, args, setIsLoading)(canExecute)
   }
 }
@@ -69,6 +67,7 @@ function execute(action, args, setIsLoadingTo) {
     if (actionResult instanceof Promise && setIsLoadingTo) {
       setIsLoading(true, setIsLoadingTo)
       return actionResult.then((result) => {
+        actions[action].timestamp = new Date().getTime()
         return result
       }).finally(() => {
         setIsLoading(false, setIsLoadingTo)
