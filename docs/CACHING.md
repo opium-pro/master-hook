@@ -14,7 +14,10 @@ export const useMyHook = MasterHook({
   cache: {value: 0}
 })
 ```
-> Cache is being updated every time you update the storage. So it's always fresh!
+
+## Chanhing is smart!
+
+Cache is being updated every time you update the storage. So it's always fresh!
 
 
 ## Change caching storage
