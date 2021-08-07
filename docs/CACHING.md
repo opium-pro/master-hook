@@ -15,7 +15,7 @@ export const useMyHook = MasterHook({
 })
 ```
 
-## Chanhing is smart!
+## Chaching is smart!
 
 Cache is being updated every time you update the storage. So it's always fresh!
 Cached data are being used unly when the app is launching to display the data immediately with no need to wait server responce. 
