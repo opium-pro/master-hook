@@ -1,6 +1,6 @@
 [<<< go back](https://github.com/opium-pro/master-hook)
 
-## Fast start
+# Fast start
 
 app.jsx:
 ```jsx
@@ -15,13 +15,12 @@ export const App = ({children}) => (
 ```
 
 hooks.js:
-
-> Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 ```js
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
 ```
+> Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 
 and then you can use this hook
 ```jsx
@@ -43,3 +42,13 @@ export const Component = () => {
   )
 }
 ```
+
+## See more:
+
+* [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
+* [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
+* [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
+* [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
+* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+===
+[Playground](https://github.com/opium-pro/master-hook-playground)

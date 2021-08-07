@@ -8,8 +8,6 @@ When the Promice is resolved or rejected, state of the storage becomes `isLoadin
 
 Just pass a list of storage names as second argument to `createAction`
 
-> It works only for async actions
-
 actions.js
 ```js
 import { createAction } from 'master-hook'
@@ -18,6 +16,19 @@ import { fetchSomeUrl } from 'fetch'
 export const myAction = createAction(async () => {
   await fetchSomeUrl()
 }, ['storage-n1', 'storage-n2'])
+// Just pass an array of storage names nat have to be `isLoading`
 ```
+> It works only for async actions
 
 That's all. Now storages 'storage-n1' and 'storage-n2' will have `isLoading: true` when `myAction` is in process
+
+
+## See more:
+
+* [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
+* [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
+* [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
+* [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
+* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+===
+[Playground](https://github.com/opium-pro/master-hook-playground)

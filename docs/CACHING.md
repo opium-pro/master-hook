@@ -44,3 +44,13 @@ export const useMyHook = MasterHook({
 ```
 
 > Take a note. Your custom localStorage has to use the same getters and setters pattern, like `window.localStorage`: `getItem`, `setItem`, `removeItem`. And also we support `clear` method, to clear all localStorage
+
+## See more:
+
+* [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
+* [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
+* [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
+* [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
+* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+===
+[Playground](https://github.com/opium-pro/master-hook-playground)
