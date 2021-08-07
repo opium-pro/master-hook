@@ -38,7 +38,7 @@ export function constructor({
 
   const useActions = () => {
     const result = {}
-    Object.keys(actions).forEach(key => {
+    actions && Object.keys(actions).forEach(key => {
       result[key] = useAction(actions[key])
     })
     return result
@@ -46,7 +46,7 @@ export function constructor({
 
   const useSelectors = () => {
     const result = {}
-    Object.keys(selectors).forEach(key => {
+    selectors && Object.keys(selectors).forEach(key => {
       result[key] = useSelector(selectors[key])
     })
     
