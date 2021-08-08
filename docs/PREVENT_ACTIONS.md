@@ -4,7 +4,7 @@
 
 You can prevent actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
 
-Just pass `{canRepeatIn: 1000}` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means, that in can be fired only once.
+Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means, that in can be fired only once.
 
 actions.js
 ```js
@@ -18,8 +18,8 @@ You can just pass a number as second (or third) argument to `createAction`, it w
 > createAction(() => {}, 1000)
 
 
-## Force action to fire
-Sometimes you need to fire an action with no
+## Force an action to fire
+Sometimes you need to force an action to fire. Wrap your action in `force` function then and it wont pay attention to `canRepeatIn`.
 
 component.js
 ```jsx
@@ -28,7 +28,6 @@ import { useMyHook } from './hooks.js'
 import { force } from 'master-hook'
 
 export const Component = () => {
-  // all the setters are being created automatically
   const {value, myAction} = useMyHook()
 
   function handleClick() {
