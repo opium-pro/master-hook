@@ -20,8 +20,8 @@ export const myAction = createAction(async () => {
 > It works only for async actions
 
 If you pass just a list of storage names or a string as second (or third) argument to `createAction`, it will also work
-> createAction(f => f, 'storage')
-> createAction(f => f, ['storage-n1', 'storage-n2'])
+> createAction(() => {}, 'storage')
+> createAction(() => {}, ['storage-n1', 'storage-n2'])
 
 That's all. Now your storages will have `isPending: true` when `myAction` is in process
 

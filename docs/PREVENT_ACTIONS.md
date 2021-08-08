@@ -10,12 +10,12 @@ actions.js
 ```js
 import { createAction } from 'master-hook'
 
-export const myAction = createAction(async () => {
+export const myAction = createAction(() => {
   // Do your stuff here
 }, {canRepeatIn: 1000})
 ```
-You can just pass a number as second (or third) argument to 'createAction', is will also work
-> createAction(f => f, 1000)
+You can just pass a number as second (or third) argument to `createAction`, it will also work
+> createAction(() => {}, 1000)
 
 
 ## Force action to fire
