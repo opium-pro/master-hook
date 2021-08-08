@@ -43,7 +43,7 @@ For every first-level key in your `initialState` we create setters. You can obta
 ```jsx
 
 // With this initial state
-const initialState = { value1: 'val1', value2: 'val2 }
+const initialState = { value1: 'val1', value2: 'val2' }
 
 // This values and setters will be available
 const { value1, setValue1, value2, setValue2 } = useMyHook()
