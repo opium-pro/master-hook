@@ -69,12 +69,12 @@ export const Component = () => {
   reset('keyName')
 
   // Set the whole storage to passed value
-  // !!! You can not use any other keys then in the 'initialState'
   reset({ value: 'newValue' })
-
-  // Changes passed keys in the storage without deleting others
   // !!! You can not use any other keys then in the 'initialState'
+
+  // Change specific values in the storage without deleting others
   patch({ value: 'newValue' })
+  // !!! You can not use any other keys then in the 'initialState'
 
   return (
     <div>
@@ -86,7 +86,39 @@ export const Component = () => {
 
 ## Using several storages in one hook
 
-If you pass an array
+If you pass an array of strings instead of string to `storage` when creating a hook, all this storages will be connected to the hook.
+
+```js
+import MasterHook from 'master-hook'
+
+export const useMyHook = MasterHook({
+  storage: ['storage1', 'storage2'],
+  initialState: { value: 'hoooook' },
+})
+```
+
+And then you can get this storages from the hook
+
+component.js
+```jsx
+import React from 'react'
+import { useMyHook } from './hooks.js'
+
+export const Component = () => {
+  // all the setters are being created automatically
+  const { storage1, storage2 } = useMyHook()
+
+  function handleClick() {
+    storage1.setValue('updated')
+  }
+
+  return (
+    <div onClick={handleClick}>
+      {storage1.value}
+    </div>
+  )
+}
+```
 
 ## See more:
 

@@ -32,7 +32,7 @@ import { useMyHook } from './hooks.js'
 
 export const Component = () => {
   // all the setters are being created automatically
-  const {value, setValue} = useMyHook()
+  const { value, setValue } = useMyHook()
 
   function handleClick() {
     setValue('updated')
