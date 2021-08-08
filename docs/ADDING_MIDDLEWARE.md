@@ -1,4 +1,4 @@
-[<<< to the main page](https://github.com/opium-pro/master-hook)
+[<- to the main page](https://github.com/opium-pro/master-hook)
 
 # Adding middleware and DevTools
 
@@ -52,4 +52,4 @@ export const App = ({children}) => (
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_MIDDLEWARE.md)
 ---
-[Playground repo >](https://github.com/opium-pro/master-hook-playground)
+* [Playground repo](https://github.com/opium-pro/master-hook-playground)

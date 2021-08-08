@@ -1,6 +1,8 @@
-[<<< to the main page](https://github.com/opium-pro/master-hook)
+[<- to the main page](https://github.com/opium-pro/master-hook)
 
 # Adding reducers
+
+You can add any custom reducers in order to connect some other stuff to Redux.
 
 Just pass your reducers to `addReducers`, they will be added to the store.
 
@@ -34,4 +36,4 @@ export const App = ({children}) => (
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_MIDDLEWARE.md)
 ---
-[Playground repo >](https://github.com/opium-pro/master-hook-playground)
+* [Playground repo](https://github.com/opium-pro/master-hook-playground)

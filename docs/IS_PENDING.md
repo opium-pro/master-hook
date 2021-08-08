@@ -1,4 +1,4 @@
-[<<< to the main page](https://github.com/opium-pro/master-hook)
+[<- to the main page](https://github.com/opium-pro/master-hook)
 
 # Autoset 'isPending'
 
@@ -38,4 +38,4 @@ That's all. Now your storages will have `isPending: true` when `myAction` is in 
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_MIDDLEWARE.md)
 ---
-[Playground repo >](https://github.com/opium-pro/master-hook-playground)
+* [Playground repo](https://github.com/opium-pro/master-hook-playground)
