@@ -2,11 +2,11 @@ import { getMediator, useMediator } from './mediators'
 import { useSubscribedMediator } from './mediators'
 
 let storageIndex = 0
-export const storages = {}
+export const mediators = {}
 
 
 export function useStorage(name: string, subscribe?: boolean) {
-  const mediator = storages[name]
+  const mediator = mediators[name]
 
   if (!mediator) {
     console.error(`You address an unexisting storage: '${name}'`)
@@ -20,19 +20,19 @@ export function useStorage(name: string, subscribe?: boolean) {
 
 
 export function getStorage(name) {
-  if (!storages[name]) {
+  if (!mediators[name]) {
     console.error(`MasterHook. Storage you ask does not exist: ${name}`)
   }
 
-  return storages[name]
+  return mediators[name]
 }
 
 
 export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
 
-  if (storages[name]) {
-    return storages[name]
+  if (mediators[name]) {
+    return mediators[name]
   }
 
   const defaultState = {
@@ -40,7 +40,7 @@ export function createStorage(name: string, initialState, cache?: { [key: string
   }
 
   const mediator = getMediator(name, {...defaultState, ...initialState}, cache)
-  storages[name] = mediator
+  mediators[name] = mediator
 
-  return mediator
+  return () => useStorage(name, true)
 }

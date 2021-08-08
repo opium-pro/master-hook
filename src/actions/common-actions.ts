@@ -1,4 +1,4 @@
-import { useStorage, storages } from '../storage'
+import { useStorage, mediators } from '../storage'
 import { localStorage } from '../local-storage'
 
 
@@ -11,8 +11,8 @@ export function setIsPending(value, storeNames) {
 
 
 export async function setFromCache() {
-  for (const key in storages) {
-    const { cache, name } = storages[key]
+  for (const key in mediators) {
+    const { cache, name } = mediators[key]
     const { patch } = useStorage(name)
 
     if (cache) {

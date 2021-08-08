@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { storages } from "./storage"
+import { mediators } from "./storage"
 import thunk from 'redux-thunk'
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import { Provider as ReduxProvider } from 'react-redux'
@@ -13,8 +13,8 @@ let withDevTools = true
 
 export function getReducer() {
   const reducers = {...externalReducers}
-  Object.keys(storages).forEach(key => {
-    reducers[key] = storages[key]?.reducer
+  Object.keys(mediators).forEach(key => {
+    reducers[key] = mediators[key]?.reducer
   })
   return combineReducers(reducers)
 }
@@ -38,7 +38,7 @@ export function addMiddleware(middleware: any) {
 
 
 export function getStore() {
-  if (store && Object.keys(storages).length) {
+  if (store && Object.keys(mediators).length) {
     return store
   }
 

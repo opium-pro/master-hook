@@ -1,6 +1,6 @@
 import { makeDefaultActions } from './default-actions'
 import { actionCreator, handleActions } from './action-creator'
-import { storages } from '../storage'
+import { mediators } from '../storage'
 
 export interface Mediator {
   set: { [key: string]: any }
@@ -14,8 +14,8 @@ export interface Mediator {
 
 
 export function getMediator (name: string, initialState?: { [key: string]: any }, cache?: { [key: string]: any }): Mediator {
-  if (storages[name]) {
-    return storages[name]
+  if (mediators[name]) {
+    return mediators[name]
   }
 
   const keys = Object.keys(initialState)
