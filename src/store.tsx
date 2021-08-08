@@ -44,7 +44,7 @@ export function getStore() {
 
   const reducer = getReducer()
   const devTools = withDevTools && (window as any)?.__REDUX_DEVTOOLS_EXTENSION__
-  const middleware = [,
+  const middleware = [
     applyMiddleware(thunk, ...externalMiddleware),
     devTools ? devTools?.() : f => f,
   ]
