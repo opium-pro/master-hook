@@ -5,8 +5,9 @@
 
 ## 1. Create actions
 
-actions.js
 ```js
+// actions.js
+
 import { useStorage, createAction } from 'master-hook'
 
 export const myAction = createAction(() => {
@@ -22,8 +23,9 @@ export const myAction = createAction(() => {
 ## 2. Pass actions to the hook
 You can also pass one action to multiple hooks
 
-hooks.js:
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 import { myAction } from './actions'
 
@@ -41,6 +43,8 @@ Actually, you can also use your actions directly.
 But hooks are fun)
 
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 

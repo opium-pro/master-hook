@@ -12,6 +12,8 @@ There are two ways to create a storage:
 Create a storage by creating a hook:
 
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({
@@ -23,6 +25,8 @@ export const useMyHook = MasterHook({
 Create a storage by calling `createStorage`:
 
 ```js
+// hooks.js
+
 import { createStorage } from 'master-hook'
 
 const initialState = { value: 'hoooook' }
@@ -54,8 +58,9 @@ const { value1, setValue1, value2, setValue2 } = useMyHook()
 
 You can also obtain `reset` and `patch` actions from the hook.
 
-component.js
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 
@@ -89,6 +94,8 @@ export const Component = () => {
 If you pass an array of strings instead of string to `storage` when creating a hook, all this storages will be connected to the hook.
 
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({
@@ -99,8 +106,9 @@ export const useMyHook = MasterHook({
 
 And then you can get this storages from the hook
 
-component.js
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 

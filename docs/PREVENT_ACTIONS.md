@@ -6,8 +6,9 @@ You can prevent actions from firing too often. For example, from sending request
 
 Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means it can be fired only once.
 
-actions.js
 ```js
+// actions.js
+
 import { createAction } from 'master-hook'
 
 export const myAction = createAction(() => {
@@ -21,8 +22,9 @@ You can just pass a number as second (or third) argument to `createAction`, it w
 ## Force an action to fire
 Sometimes you need to force an action to fire. Wrap your action in `force` function then and it wont pay attention to `canRepeatIn`.
 
-component.js
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 import { force } from 'master-hook'

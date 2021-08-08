@@ -3,8 +3,10 @@
 # Getting Started
 
 ## 1. Wrap the app with a Provider
-app.jsx:
+
 ```jsx
+// app.jsx
+
 import React from 'react'
 import MasterHook from 'master-hook'
 
@@ -16,8 +18,10 @@ export const App = () => (
 ```
 
 ## 2. Create hooks
-hooks.js:
+
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
@@ -25,8 +29,10 @@ export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
 > You have to specify all first-level keys in your initial state, even if its value is undefined
 
 ## 3. Use hooks
-component.js
+
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 

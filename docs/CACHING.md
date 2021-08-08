@@ -4,9 +4,9 @@
 
 Just pass `cache` to MasterHook and specify how long the values have to be stored in milliseconds. `0` means forever.
 
-hooks.js:
-
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({
@@ -31,9 +31,9 @@ By default we use `window.localStorage` to cache values. But if you want to use 
 
 You may need this for `React Native`. Just pass `MasterHook.setLocalStorage`
 
-hooks.js:
-
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 
 // For example, we want to use this storage

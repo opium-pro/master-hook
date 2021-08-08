@@ -6,8 +6,9 @@ You can add any custom reducers in order to connect some other stuff to Redux.
 
 Just pass your reducers to `addReducers`, they will be added to the store.
 
-app.jsx:
 ```jsx
+// app.jsx
+
 import React from 'react'
 import MasterHook from 'master-hook'
 

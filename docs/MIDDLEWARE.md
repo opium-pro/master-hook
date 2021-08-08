@@ -6,8 +6,9 @@
 
 `Redux DevTools` is also included, but you can turn it off by calling `useDevTools`.
 
-app.jsx:
 ```jsx
+// app.jsx
+
 import React from 'react'
 import MasterHook from 'master-hook'
 
@@ -24,8 +25,9 @@ export const App = () => (
 
 To add more middleware, use `addMiddleware`.
 
-app.jsx:
 ```jsx
+// app.jsx
+
 import React from 'react'
 import MasterHook from 'master-hook'
 

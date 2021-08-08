@@ -3,8 +3,10 @@
 # Using Selectors
 
 ## 1. Create selectors
-selectors.js
+
 ```js
+// selectors.js
+
 import { createSelector, useStorage } from 'master-hook'
 
 export const mySelector = createSelector(
@@ -18,8 +20,10 @@ export const mySelector = createSelector(
 ```
 
 ## 2. Pass selectors to hooks
-hooks.js:
+
 ```js
+// hooks.js
+
 import MasterHook from 'master-hook'
 import { mySelector } from './selectors'
 
@@ -33,6 +37,8 @@ export const useMyHook = MasterHook({
 ## 3. Get selectors from the hooks
 
 ```jsx
+// component.jsx
+
 import React from 'react'
 import { useMyHook } from './hooks.js'
 

@@ -8,8 +8,9 @@ When the Promise is resolved or rejected, state of the storage becomes `isPendin
 
 Pass `{ setIsPendingTo: 'storage-name' }` as second argument to `createAction`, where the value is a string or array of strings with storage names.
 
-actions.js
 ```js
+// actions.js
+
 import { createAction } from 'master-hook'
 import { fetchSomeUrl } from './my-fetch-functions'
 
