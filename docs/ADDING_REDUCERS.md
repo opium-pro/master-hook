@@ -12,7 +12,7 @@ import React from 'react'
 import MasterHook from 'master-hook'
 
 MasterHook.addReducers({
-  reducerName: 'incert your reducer here',
+  reducerName: 'insert your reducer here',
 })
 
 export const App = ({children}) => (
