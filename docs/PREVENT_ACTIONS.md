@@ -2,7 +2,7 @@
 
 # Preventing actions
 
-You can Preventing Actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
+You can prevent actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
 
 Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means it can be fired only once.
 
