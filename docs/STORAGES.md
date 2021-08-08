@@ -28,7 +28,7 @@ import { createStorage } from 'master-hook'
 const initialState = { value: 'hoooook' }
 const cache = { value: 0 }
 
-createStorage('my-storage', initialState, cache)
+const useMyStorage = createStorage('my-storage', initialState, cache)
 ```
 
 > createStorage(name, initialState, \[cache])
