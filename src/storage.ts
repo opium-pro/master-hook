@@ -28,7 +28,7 @@ export function getStorage(name) {
 }
 
 
-export function createStorage(name: string, initialState, stash?: { [key: string]: number }) {
+export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
   const defaultState = {
     isPending: false,
@@ -38,7 +38,7 @@ export function createStorage(name: string, initialState, stash?: { [key: string
     return storages[name]
   }
 
-  const mediator = getMediator(name, {...defaultState, ...initialState}, stash)
+  const mediator = getMediator(name, {...defaultState, ...initialState}, cache)
   storages[name] = mediator
 
   return mediator
