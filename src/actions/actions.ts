@@ -16,8 +16,8 @@ export function force(calledAction) {
 
 
 export type ActionOptions = {
-  setIsPendingTo?: string[] | string,
-  canRepeatIn?: number,
+  setIsPendingTo?: string[] | string
+  canRepeatIn?: number
 } | number | string | string[]
 
 
@@ -27,11 +27,13 @@ export function createAction(action, ...options: ActionOptions[]) {
   let canRepeatIn: number
 
   options?.forEach(function normalizeOptions(option) {
-    typeof option === 'number' && (canRepeatIn = option)
-    typeof option === 'string' && (setIsPendingTo = [option])
-    Array.isArray(option) && (setIsPendingTo = option)
-    if (option instanceof Object) {
-      Object.values(option).forEach(normalizeOptions)
+    if (option instanceof Object && !Array.isArray(option)) {
+      canRepeatIn = option.canRepeatIn
+      setIsPendingTo = Array.isArray(option.setIsPendingTo) ? option.setIsPendingTo : [option.setIsPendingTo]
+    } else {
+      typeof option === 'number' && (canRepeatIn = option)
+      typeof option === 'string' && (setIsPendingTo = [option])
+      Array.isArray(option) && (setIsPendingTo = option)
     }
   })
 
