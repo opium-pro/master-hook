@@ -1,6 +1,6 @@
 [<- to the main page](https://github.com/opium-pro/master-hook)
 
-# Using Actions
+# Using Storages
 
 There are two ways to create a storage:
 1. By creating a hook with `MasterHook`
