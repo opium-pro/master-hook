@@ -13,9 +13,9 @@ import MasterHook from 'master-hook'
 
 MasterHook.useDevTools(false)
 
-export const App = ({children}) => (
+export const App = () => (
   <MasterHook.Provider>
-    {children}
+    // Your app code is here
   </MasterHook.Provider>
 )
 ```

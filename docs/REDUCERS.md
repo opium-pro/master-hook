@@ -15,9 +15,9 @@ MasterHook.addReducers({
   reducerName: 'insert your reducer here',
 })
 
-export const App = ({children}) => (
+export const App = () => (
   <MasterHook.Provider>
-    {children}
+    // Your app code is here
   </MasterHook.Provider>
 )
 ```
