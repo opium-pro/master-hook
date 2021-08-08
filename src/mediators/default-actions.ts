@@ -6,7 +6,7 @@ export function makeDefaultActions(name, initialState, cache) {
     let newState
     if (typeof payload === 'string') {
       newState = { ...state, [payload]: initialState[payload] }
-    } else if (payload instanceof Object) {
+    } else if (payload instanceof Object && !Array.isArray(payload)) {
       newState = payload
     } else {
       newState = initialState
