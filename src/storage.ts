@@ -30,12 +30,13 @@ export function getStorage(name) {
 
 export function createStorage(name: string, initialState, cache?: { [key: string]: number }) {
   !name && (name = 'masterhook-' + storageIndex++)
-  const defaultState = {
-    isPending: false,
-  }
 
   if (storages[name]) {
     return storages[name]
+  }
+
+  const defaultState = {
+    isPending: false,
   }
 
   const mediator = getMediator(name, {...defaultState, ...initialState}, cache)
