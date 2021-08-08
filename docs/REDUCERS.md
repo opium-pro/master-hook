@@ -38,4 +38,5 @@ export const App = ({children}) => (
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md) [you are here]
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/MIDDLEWARE.md)
 ---
-* [Playground repo](https://github.com/opium-pro/master-hook-playground)
+* [Playground Repo](https://github.com/opium-pro/master-hook-playground)
+* [Npm Package](https://www.npmjs.com/package/master-hook)
