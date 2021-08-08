@@ -10,8 +10,8 @@ Just pass `cache` to MasterHook and specify how long the values have to be store
 import MasterHook from 'master-hook'
 
 export const useMyHook = MasterHook({
-  initialState: {value: 'hoooook'},
-  cache: {value: 0}
+  initialState: { value: 'hoooook' },
+  cache: { value: 0 },
 })
 ```
 
@@ -43,8 +43,8 @@ MasterHook.setLocalStorage(AsyncStorage)
 // Done. Now `AsyncStorage` is being used by default
 
 export const useMyHook = MasterHook({
-  initialState: {value: 'hoooook'},
-  cache: {value: 0}
+  initialState: { value: 'hoooook' },
+  cache: { value: 0 },
 })
 ```
 
