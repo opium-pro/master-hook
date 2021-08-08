@@ -64,6 +64,7 @@ export const Component = () => {
 * [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
-* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+[Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
+* [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
 [Playground repo >>>](https://github.com/opium-pro/master-hook-playground)
