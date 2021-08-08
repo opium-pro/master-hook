@@ -4,7 +4,7 @@
 
 You can prevent actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
 
-Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means, that in can be fired only once.
+Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means it can be fired only once.
 
 actions.js
 ```js
@@ -12,7 +12,7 @@ import { createAction } from 'master-hook'
 
 export const myAction = createAction(() => {
   // Do your stuff here
-}, {canRepeatIn: 1000})
+}, { canRepeatIn: 1000 })
 ```
 You can just pass a number as second (or third) argument to `createAction`, it will also work
 > createAction(() => {}, 1000)
