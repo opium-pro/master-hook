@@ -23,6 +23,8 @@ export async function setFromCache() {
         const then = new Date(value?.timestamp).getTime()
         if (cache[key] === 0 || (then + cache[key] > now)) {
           cachedState[key] = value?.body
+        } else {
+          localStorage.removeItem(`${name}__${key}`)
         }
       }
       patch(cachedState)

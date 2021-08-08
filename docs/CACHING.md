@@ -18,7 +18,7 @@ export const useMyHook = MasterHook({
 ## Keep cached data fresh
 
 Cache is being updated every time you update the storage. So it's always fresh!
-Cached data are being used unly when the app is launching to display the data immediately with no need to wait server responce.
+Cached data are being used only when the app is launching to display the data immediately with no need to wait server responce.
 
 Use [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md) if you want to prevent some actions from firing (for example from sendind requests to the server too often).
 
