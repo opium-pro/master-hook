@@ -25,6 +25,7 @@ export const useMyHook = MasterHook({initialState: {value: 'hoooook'}})
 > Take a note — you need to specify all first-level keys in your initial state, even if its value is undefined
 
 ## 3. Use hooks
+component.js
 ```jsx
 import React from 'react'
 import { useMyHook } from './hooks.js'
@@ -50,6 +51,7 @@ export const Component = () => {
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
-* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+[Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
+* [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
 [Playground repo >>>](https://github.com/opium-pro/master-hook-playground)

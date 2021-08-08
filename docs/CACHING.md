@@ -15,12 +15,14 @@ export const useMyHook = MasterHook({
 })
 ```
 
-## Caching is smart!
+## Keep cached data fresh
 
 Cache is being updated every time you update the storage. So it's always fresh!
-Cached data are being used unly when the app is launching to display the data immediately with no need to wait server responce. 
+Cached data are being used unly when the app is launching to display the data immediately with no need to wait server responce.
 
-> If server did't response and you want your user to continue using cached data, just don't update cached values in your MasterHook storage
+If you want to prevent some actions from firing (for example from sendind requests to the server too often), check out [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
+
+> If server did't response and you want your user to continue using cached data, just don't clear values in your MasterHook storage and they will be there even after page reload
 
 
 ## Cange caching storage
@@ -46,13 +48,14 @@ export const useMyHook = MasterHook({
 })
 ```
 
-> Take a note. Your custom localStorage has to use the same getters and setters pattern, like `window.localStorage`: `getItem`, `setItem`, `removeItem`. And also we support `clear` method, to clear all localStorage
+> Take a note. Your custom localStorage has to use the same getters and setters pattern, like `window.localStorage`: `getItem`, `setItem`, `removeItem`, `clear`
 
 ## See more:
 
 * [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
-* [Autoset 'isLoading'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_LOADING.md)
+[Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
+* [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
 [Playground repo >>>](https://github.com/opium-pro/master-hook-playground)
