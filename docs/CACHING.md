@@ -20,7 +20,7 @@ export const useMyHook = MasterHook({
 Cache is being updated every time you update the storage. So it's always fresh!
 Cached data are being used only when the app is launching to display the data immediately with no need to wait server responce.
 
-Use [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md) if you want to prevent some actions from firing (for example from sendind requests to the server too often).
+Use [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md) if you want to prevent some actions from firing (for example from sendind requests to the server too often).
 
 > If server did't response and you want your user to continue using cached data, just don't clear values in your MasterHook storage and they will be there even after page reload
 
@@ -58,7 +58,7 @@ export const useMyHook = MasterHook({
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md) [you are here]
-* [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
+* [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md)

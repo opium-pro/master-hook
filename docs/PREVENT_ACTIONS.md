@@ -1,8 +1,8 @@
 [<- to the main page](https://github.com/opium-pro/master-hook)
 
-# Prevent actions
+# Preventing actions
 
-You can prevent actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
+You can Preventing Actions from firing too often. For example, from sending requests to the server every time, if it was successfully sent once.
 
 Just pass `{ canRepeatIn: 1000 }` to `createAction`, where number is the time in ms, after which function is allowed to fire again. `0` means it can be fired only once.
 
@@ -53,7 +53,7 @@ export const Component = () => {
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
-* [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md) [you are here]
+* [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md) [you are here]
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md)
