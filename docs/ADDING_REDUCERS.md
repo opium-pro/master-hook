@@ -1,51 +1,26 @@
 [<<< to the main page](https://github.com/opium-pro/master-hook)
 
-# Using Selectors
+# Adding reducers
 
-## 1. Create selectors
-selectors.js
-```js
-import { createSelector, useStorage } from 'master-hook'
+Just pass your reducers to `addReducers`, they will be added to the store.
 
-export const mySelector = createSelector(
-  () => useStorage('hook-n1').value,
-
-  (value) => {
-    const newValue = value + 'opopop'
-    return newValue
-  }
-)
-```
-
-## 2. Pass selectors to hooks
-hooks.js:
-```js
-import MasterHook from 'master-hook'
-import { mySelector } from './selectors'
-
-export const useMyHook = MasterHook({
-  storage: 'hook-n1',
-  selectors: { mySelector },
-  initialState: { value: 'hoooook' },
-})
-```
-
-## 3. Get selectors from the hooks
-
+app.jsx:
 ```jsx
 import React from 'react'
-import { useMyHook } from './hooks.js'
+import MasterHook from 'master-hook'
 
-export const Component = () => {
-  const { mySelector } = useMyHook()
+MasterHook.addReducers({
+  reducerName: 'incert your reducer here',
+})
 
-  return (
-    <div onClick={handleClick}>
-      {mySelector}
-    </div>
-  )
-}
+export const App = ({children}) => (
+  <MasterHook.Provider>
+    {children}
+  </MasterHook.Provider>
+)
 ```
+> Make sure to do it BEFORE calling 'Provider'
+
 
 ## See more:
 
