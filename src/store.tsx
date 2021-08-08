@@ -6,10 +6,13 @@ import { Provider as ReduxProvider } from 'react-redux'
 import { setFromCache } from './actions'
 
 let store = undefined
+let externalReducers = {}
+let externalMiddleware: any[] = []
+let withDevTools = true
 
 
 export function getReducer() {
-  const reducers = {}
+  const reducers = {...externalReducers}
   Object.keys(storages).forEach(key => {
     reducers[key] = storages[key]?.reducer
   })
@@ -17,18 +20,38 @@ export function getReducer() {
 }
 
 
+export function useDevTools(value: boolean) {
+  withDevTools = value
+}
+
+
+export function addReducers(reducers: {[key: string]: any}) {
+  externalReducers = reducers
+}
+
+export function addMiddleware(middleware: any) {
+  if (!Array.isArray(middleware)) {
+    middleware = [middleware]
+  }
+  externalMiddleware = middleware
+}
+
+
 export function getStore() {
   if (store && Object.keys(storages).length) {
     return store
   }
+
   const reducer = getReducer()
-  const devTools = (window as any)?.__REDUX_DEVTOOLS_EXTENSION__
+  const devTools = withDevTools && (window as any)?.__REDUX_DEVTOOLS_EXTENSION__
+  const middleware = [
+    applyMiddleware(thunk, ...externalMiddleware),
+    devTools ? devTools?.() : f => f,
+  ]
+
   store = createStore(
     reducer,
-    compose(
-      applyMiddleware(thunk),
-      devTools ? devTools?.() : f => f
-    )
+    compose(...middleware)
   )
 
   return store

@@ -1,11 +1,30 @@
-# Easy connect to Redux by hooks with smart caching
-* Connect Redux in 1 minute and use it like a pro
-* Actions, selectors, caching from the box
-* Works with regular `React` and `React Native`
+[<- to the main page](https://github.com/opium-pro/master-hook)
 
+# Adding reducers
+
+You can add any custom reducers in order to connect some other stuff to Redux.
+
+Just pass your reducers to `addReducers`, they will be added to the store.
+
+app.jsx:
+```jsx
+import React from 'react'
+import MasterHook from 'master-hook'
+
+MasterHook.addReducers({
+  reducerName: 'incert your reducer here',
+})
+
+export const App = ({children}) => (
+  <MasterHook.Provider>
+    {children}
+  </MasterHook.Provider>
+)
 ```
-npm i master-hook
-```
+> Make sure to do it BEFORE calling 'Provider'
+
+
+## See more:
 
 * [Getting Started](https://github.com/opium-pro/master-hook/blob/master/docs/GETTING_STARTED.md)
 ---
@@ -15,7 +34,7 @@ npm i master-hook
 * [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
-* [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_REDUCERS.md)
+* [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_REDUCERS.md) [you are here]
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/ADDING_MIDDLEWARE.md)
 ---
 * [Playground repo](https://github.com/opium-pro/master-hook-playground)
