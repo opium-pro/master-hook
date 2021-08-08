@@ -48,7 +48,7 @@ export const Component = () => {
 
 ## See more:
 
-* [Getting Started](https://github.com/opium-pro/master-hook/blob/master/docs/GETTING_STARTED.md)
+* [Getting Started](https://github.com/opium-pro/master-hook/blob/master/docs/GETTING_STARTED.md) [you are here]
 ---
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)

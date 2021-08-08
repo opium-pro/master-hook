@@ -56,7 +56,7 @@ export const useMyHook = MasterHook({
 ---
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
-* [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
+* [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md) [you are here]
 * [Prevent Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
