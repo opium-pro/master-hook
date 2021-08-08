@@ -75,6 +75,7 @@ function execute(action, args, setIsPendingTo) {
         setIsPending(false, setIsPendingTo)
       })
     } else {
+      actions[action].timestamp = new Date().getTime()
       return actionResult
     }
   }
