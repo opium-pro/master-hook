@@ -1,6 +1,6 @@
 [<- to the main page](https://github.com/opium-pro/master-hook)
 
-# Fast start
+# Getting Started
 
 ## 1. Wrap the app with a Provider
 app.jsx:
@@ -48,7 +48,8 @@ export const Component = () => {
 
 ## See more:
 
-* [Fast Start](https://github.com/opium-pro/master-hook/blob/master/docs/FAST_START.md)
+* [Getting Started](https://github.com/opium-pro/master-hook/blob/master/docs/GETTING_STARTED.md)
+---
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
