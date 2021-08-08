@@ -84,7 +84,7 @@ export const Component = () => {
 }
 ```
 
-## Using several storages in one hook
+## Connecting several storages to one hook
 
 If you pass an array of strings instead of string to `storage` when creating a hook, all this storages will be connected to the hook.
 
