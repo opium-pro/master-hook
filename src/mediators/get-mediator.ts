@@ -1,6 +1,8 @@
 import { makeDefaultActions } from './default-actions'
-import { actionCreator, handleActions } from './action-creator'
-import { mediators } from '../storage'
+import { actionCreator } from './action-creator'
+import { createReducer } from './create-reducer'
+import { mediators } from '../collector'
+
 
 export interface Mediator {
   set: { [key: string]: any }
@@ -13,7 +15,11 @@ export interface Mediator {
 }
 
 
-export function getMediator (name: string, initialState?: { [key: string]: any }, cache?: { [key: string]: any }): Mediator {
+export function getMediator (
+  name: string,
+  initialState?: { [key: string]: any },
+  cache?: { [key: string]: any }
+): Mediator {
   if (mediators[name]) {
     return mediators[name]
   }
@@ -47,7 +53,7 @@ export function getMediator (name: string, initialState?: { [key: string]: any }
 
         return storeData ? storeData[key] : undefined;
       }
-    }));
+    }))
 
 
   const defaultActionCreators = {}
@@ -72,7 +78,7 @@ export function getMediator (name: string, initialState?: { [key: string]: any }
     set,
     get,
     actions: defaultActionCreators,
-    reducer: handleActions(handlers, initialState),
+    reducer: createReducer(handlers, initialState),
     initialState,
     cache,
     name,

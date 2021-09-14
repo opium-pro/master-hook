@@ -1,5 +1,6 @@
-import { useStorage, createStorage } from './storage'
-import { useAction } from './actions'
+import { useStorage } from './storage/use-storage'
+import { createStorage } from './storage/create-storage'
+import { useAction } from './actions/use-action'
 import { useSelector } from './selectors'
 
 export interface MasterHookArgs {

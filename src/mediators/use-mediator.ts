@@ -1,7 +1,6 @@
-import { getStore } from '../store'
-import { localStorage } from '../local-storage'
+import { getStore } from '../store/get-store'
+import { setCachedIfAllowed } from '../local-storage/cached'
 import { useSelector } from 'react-redux'
-import { mediators } from '../storage'
 
 
 export function useSubscribedMediator(mediator, storageName?: string) {
@@ -43,10 +42,7 @@ export function useMediator({
   set && Object.keys(set).forEach(key => {
     const name = `set${key.charAt(0).toUpperCase() + key.slice(1)}`
     handlers[name] = (value: any) => {
-      const cache = mediators[storageName]?.cache || {}
-      if (typeof cache[key] === 'number') {
-        localStorage?.setItem?.(`${storageName}__${key}`, value)
-      }
+      setCachedIfAllowed(storageName, key, value)
       return dispatch(set[key](value))
     }
   })

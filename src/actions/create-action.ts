@@ -1,25 +1,11 @@
-import { useMediator } from '../mediators'
-import { setIsPending } from './common-actions'
-
-
-export const actions = {}
-
-
-export function force(calledAction) {
-  if (calledAction.type === '__MASTERHOOK_STOP_EXECUTION__') {
-    const { action, args, setIsPendingTo } = calledAction
-    return execute(action, args, setIsPendingTo)(true)
-  } else {
-    return calledAction
-  }
-}
+import { setIsPending } from './default-actions'
+import { actions } from '../collector'
 
 
 export type ActionOptions = {
   setIsPendingTo?: string[] | string
   canRepeatIn?: number
 } | number | string | string[]
-
 
 
 export function createAction(action, ...options: ActionOptions[]) {
@@ -53,6 +39,16 @@ export function createAction(action, ...options: ActionOptions[]) {
 }
 
 
+export function force(calledAction) {
+  if (calledAction.type === '__MASTERHOOK_STOP_EXECUTION__') {
+    const { action, args, setIsPendingTo } = calledAction
+    return execute(action, args, setIsPendingTo)(true)
+  } else {
+    return calledAction
+  }
+}
+
+
 function execute(action, args, setIsPendingTo) {
   return (canExecute) => {
     if (!canExecute) {
@@ -82,13 +78,3 @@ function execute(action, args, setIsPendingTo) {
 }
 
 
-export function useAction(action) {
-  if (action.name === '__masterHookAction__') {
-    // If this action was made by 'createAction',
-    // then it already has dispatch inside
-    // so we don't need to dispatch it
-    return action
-  } else {
-    return useMediator({ actions: { action } }).action
-  }
-}
