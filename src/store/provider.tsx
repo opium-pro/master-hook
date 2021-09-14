@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
+import { setFromCache } from '../actions/default-actions'
 import { getStore } from './get-store'
 
 
 export function Provider({ children, ...props }: any) {
-  const [storage, setStorage] = useState(false)
+  const [ready, setReady] = useState(false)
   useEffect(() => {
-    getStore().then(storage => {
-      setStorage(storage)
-    })
+    setFromCache().then(() => setReady(true))
   }, [])
-  if (!storage) { return null }
+
+  if (!ready) { return null }
   return (
-    <ReduxProvider {...props} store={storage}>
+    <ReduxProvider {...props} store={getStore()}>
       {children}
     </ReduxProvider>
   )

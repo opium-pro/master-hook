@@ -3,8 +3,7 @@ import { mediators } from '../collector'
 
 
 export async function getCached(name) {
-  const cache = mediators[name]?.cache
-  if (!cache) { return }
+  const cache = mediators[name]?.cache || {}
 
   const cachedState = {}
   for (const key in cache) {
@@ -17,6 +16,7 @@ export async function getCached(name) {
       localStorage.removeItem(`${name}__${key}`)
     }
   }
+  console.log('>>>>', cachedState)
   return cachedState
 }
 
