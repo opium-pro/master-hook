@@ -13,13 +13,17 @@ export function setIsPending(value, storeNames) {
 
 
 export const setFromCache = createAction(async (name?: string) => {
+  const stack = []
+
   if (name) {
-    await set(name)
+    stack.push(set(name))
   } else {
     for (const key in mediators) {
-      await set(key)
+      stack.push(set(key))
     }
   }
+
+  return Promise.all(stack)
 
   async function set(storage) {
     const { patch } = useStorage(storage)
