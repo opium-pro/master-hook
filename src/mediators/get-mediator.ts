@@ -12,6 +12,7 @@ export interface Mediator {
   initialState?: { [key: string]: any }
   cache?: { [key: string]: any }
   name: string
+  handlers?: any
 }
 
 
@@ -82,5 +83,6 @@ export function getMediator (
     initialState,
     cache,
     name,
+    handlers,
   }
 }

@@ -3,15 +3,14 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { getReducer } from './get-reducer'
 import { withDevTools, externalMiddleware} from './settings'
-import { setFromCache } from '../actions/default-actions'
+import { getCached } from '../local-storage/cached'
+import { createReducer } from '../mediators/create-reducer'
 
 
 export let store = undefined
 
 
-export function getStore() {
-  // setFromCache()
-
+export function prepare() {
   if (store && Object.keys(mediators).length) {
     return store
   }
@@ -23,10 +22,28 @@ export function getStore() {
     devTools ? devTools?.() : f => f,
   ]
 
-  store = createStore(
-    reducer,
-    compose(...middleware)
-  )
+  return {reducer, middleware: compose(...middleware)}
+}
 
+
+export function getIntermediateStore() {
+  const prepared = prepare()
+  store = createStore(prepared.reducer, prepared.middleware)
+  return store
+}
+
+
+export async function getStore() {
+  const prepared = prepare()
+
+  for (const key in mediators) {
+    if (mediators[key].cache) {
+      const cachedState = await getCached(key)
+      const initialState = { ...mediators[key].initialState, ...cachedState}
+      prepared.reducer[key] = createReducer(mediators[key].handlers, initialState)
+    }
+  }
+
+  store = createStore(prepared.reducer, prepared.middleware)
   return store
 }

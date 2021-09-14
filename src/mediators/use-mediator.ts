@@ -1,4 +1,4 @@
-import { getStore } from '../store/get-store'
+import { getIntermediateStore } from '../store/get-store'
 import { setCachedIfAllowed } from '../local-storage/cached'
 import { useSelector } from 'react-redux'
 
@@ -24,7 +24,7 @@ export function useMediator({
   set?: { [key: string]: any }
   actions?: { [key: string]: any }
 }, storageName?: string) {
-  const store = getStore()
+  const store = getIntermediateStore()
   const dispatch = store?.dispatch
   const getState = store?.getState
 

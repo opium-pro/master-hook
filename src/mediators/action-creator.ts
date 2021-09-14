@@ -8,7 +8,6 @@ const finalPayloadCreator = (payloadCreator?: Function | Error, ...args: Array<a
   if (payloadCreator) {
     return (payloadCreator instanceof Error) ? payloadCreator : payloadCreator(...args);
   }
-
   return args[0];
 }
 
@@ -23,9 +22,8 @@ export const actionCreator = (type: string, payloadCreator?: Function | Error) =
     }
 
     return action;
-  };
+  }
 
   actionCreatorHandler.toString = () => type;
-
   return actionCreatorHandler;
 }
