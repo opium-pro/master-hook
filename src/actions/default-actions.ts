@@ -14,7 +14,6 @@ export function setIsPending(value, storeNames) {
 
 export const setFromCache = createAction(async (name?: string) => {
   const stack = []
-
   if (name) {
     stack.push(set(name))
   } else {
@@ -28,6 +27,6 @@ export const setFromCache = createAction(async (name?: string) => {
   async function set(storage) {
     const { patch } = useStorage(storage)
     const cached = await getCached(storage)
-    cached && patch(cached)
+    cached && patch(cached, false)
   }
 })
