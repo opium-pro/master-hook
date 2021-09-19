@@ -13,7 +13,9 @@ export async function getCached(name: string) {
     const then = new Date(value?.timestamp).getTime()
 
     if (cache[key] === 0 || (then + cache[key] > now)) {
-      cachedState[key] = value?.body
+      if (value) {
+        cachedState[key] = value.body
+      }
     } else {
       localStorage.removeItem(valueName)
     }
