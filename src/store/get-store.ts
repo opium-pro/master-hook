@@ -3,15 +3,14 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { getReducer } from './get-reducer'
 import { withDevTools, externalMiddleware} from './settings'
-import { setFromCache } from '../actions/default-actions'
+// import { getCached } from '../local-storage/cached'
+// import { createReducer } from '../mediators/create-reducer'
 
 
 export let store = undefined
 
 
 export function getStore() {
-  // setFromCache()
-
   if (store && Object.keys(mediators).length) {
     return store
   }
@@ -23,10 +22,6 @@ export function getStore() {
     devTools ? devTools?.() : f => f,
   ]
 
-  store = createStore(
-    reducer,
-    compose(...middleware)
-  )
-
+  store = createStore(reducer, compose(...middleware))
   return store
 }

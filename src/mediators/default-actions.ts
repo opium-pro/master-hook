@@ -1,4 +1,4 @@
-import { setCachedIfAllowed, getCached } from '../local-storage/cached'
+import { setCachedIfAllowed, clearCache } from '../local-storage/cached'
 
 
 export function makeDefaultActions(name, initialState, cache) {
@@ -9,19 +9,25 @@ export function makeDefaultActions(name, initialState, cache) {
     let newState
     if (typeof payload === 'string') {
       newState = { ...state, [payload]: initialState[payload] }
+      clearCache(name, payload)
     } else if (payload instanceof Object && !Array.isArray(payload)) {
       newState = payload
+      clearCache(name).then(() => {
+        setCachedIfAllowed(name, newState)
+      })
     } else {
       newState = initialState
+      clearCache(name)
     }
-    setCachedIfAllowed(name, newState)
     return newState
   }
 
 
   actions.patch = (state: Object, { payload }: any) => {
-    const newState = { ...state, ...payload }
-    setCachedIfAllowed(name, newState)
+    const values = Array.isArray(payload) ? payload[0] : payload
+    const refreshCache = Array.isArray(payload) ? payload[1] : true
+    const newState = { ...state, ...values }
+    refreshCache && setCachedIfAllowed(name, newState)
     return newState
   }
 

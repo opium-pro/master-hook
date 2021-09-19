@@ -1,6 +1,7 @@
 import { useStorage } from '../storage/use-storage'
 import { getCached } from '../local-storage/cached'
 import { mediators } from '../collector'
+import { createAction } from './create-action'
 
 
 export function setIsPending(value, storeNames) {
@@ -11,18 +12,21 @@ export function setIsPending(value, storeNames) {
 }
 
 
-export async function setFromCache(name?: string) {
+export const setFromCache = createAction(async (name?: string) => {
+  const stack = []
   if (name) {
-    set(name)
+    stack.push(set(name))
   } else {
     for (const key in mediators) {
-      set(key)
+      stack.push(set(key))
     }
   }
 
-  function set(storage) {
-    const { fetch } = useStorage(storage)
-    const cached = getCached(storage)
-    cached && fetch(cached)
+  return Promise.all(stack)
+
+  async function set(storage) {
+    const { patch } = useStorage(storage)
+    const cached = await getCached(storage)
+    cached && patch(cached, false)
   }
-}
+})

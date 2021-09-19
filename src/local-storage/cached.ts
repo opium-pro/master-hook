@@ -2,22 +2,47 @@ import { localStorage } from './local-storage'
 import { mediators } from '../collector'
 
 
-export async function getCached(name) {
-  const cache = mediators[name]?.cache
-  if (!cache) { return }
-
+export async function getCached(name: string) {
+  const cache = mediators[name]?.cache || {}
   const cachedState = {}
+
   for (const key in cache) {
-    const value = await localStorage.getWithHeaders(`${name}__${key}`)
+    const valueName = `${name}__${key}`
+    const value = await localStorage.getWithHeaders(valueName)
     const now = new Date().getTime()
     const then = new Date(value?.timestamp).getTime()
+
     if (cache[key] === 0 || (then + cache[key] > now)) {
       cachedState[key] = value?.body
     } else {
-      localStorage.removeItem(`${name}__${key}`)
+      localStorage.removeItem(valueName)
     }
   }
+
   return cachedState
+}
+
+
+export async function clearCache(name: string, value?: string) {
+  if (!name) {
+    for (const storageName in mediators) {
+      clear(storageName)
+    }
+  } else {
+    clear(name)
+  }
+
+  function clear(storageName) {
+    const cache = mediators[storageName]?.cache || {}
+
+    if (typeof value === 'string') {
+      const valueName = `${storageName}__${value}`
+      localStorage.removeItem(valueName)
+    } else for (const key in cache) {
+      const valueName = `${storageName}__${key}`
+      localStorage.removeItem(valueName)
+    }
+  }
 }
 
 
