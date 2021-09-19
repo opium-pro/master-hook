@@ -23,6 +23,29 @@ export async function getCached(name: string) {
 }
 
 
+export async function clearCache(name: string, value?: string) {
+  if (!name) {
+    for (const storageName in mediators) {
+      clear(storageName)
+    }
+  } else {
+    clear(name)
+  }
+
+  function clear(storageName) {
+    const cache = mediators[storageName]?.cache || {}
+
+    if (typeof value === 'string') {
+      const valueName = `${storageName}__${value}`
+      localStorage.removeItem(valueName)
+    } else for (const key in cache) {
+      const valueName = `${storageName}__${key}`
+      localStorage.removeItem(valueName)
+    }
+  }
+}
+
+
 export async function setCachedIfAllowed(name: string, keyOrValues: string | object, value?: any) {
   const cache = mediators[name]?.cache
   if (!cache) { return }
