@@ -30,7 +30,7 @@ export function createAction(action, ...options: ActionOptions[]) {
     let canExecute = true
     const { timestamp } = actions[action]
 
-    if (canRepeatIn && timestamp && (canRepeatIn === 0 || timestamp + canRepeatIn > now)) {
+    if (typeof canRepeatIn === 'number' && timestamp && (canRepeatIn === 0 || timestamp + canRepeatIn > now)) {
       canExecute = false
     }
 
