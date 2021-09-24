@@ -48,7 +48,7 @@ export function useMediator({
   })
 
   actions && Object.keys(actions).forEach(key => {
-    handlers[key] = (...args: any) => dispatch(actions[key](...args))
+    handlers[key] = dispatch((...args: any) => () => actions[key](...args))
   })
 
   return handlers
