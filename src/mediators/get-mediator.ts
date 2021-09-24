@@ -8,7 +8,7 @@ export interface Mediator {
   set: { [key: string]: any }
   get: { [key: string]: any }
   reducer?: { [key: string]: any }
-  actions: { [key: string]: any }
+  defaultActions: { [key: string]: any }
   initialState?: { [key: string]: any }
   cache?: { [key: string]: any }
   name: string
@@ -78,7 +78,7 @@ export function getMediator (
   return {
     set,
     get,
-    actions: defaultActionCreators,
+    defaultActions: defaultActionCreators,
     reducer: createReducer(handlers, initialState),
     initialState,
     cache,

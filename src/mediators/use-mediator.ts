@@ -19,10 +19,12 @@ export function useMediator({
   get,
   set,
   actions,
+  defaultActions,
 }: {
   get?: { [key: string]: any }
   set?: { [key: string]: any }
   actions?: { [key: string]: any }
+  defaultActions?: { [key: string]: any }
 }, storageName?: string) {
   const store = getStore()
   const dispatch = store?.dispatch
@@ -49,6 +51,10 @@ export function useMediator({
 
   actions && Object.keys(actions).forEach(key => {
     handlers[key] = dispatch((...args: any) => () => actions[key](...args))
+  })
+
+  defaultActions && Object.keys(defaultActions).forEach(key => {
+    handlers[key] = (...args: any) => dispatch(defaultActions[key](...args))
   })
 
   return handlers
