@@ -3,8 +3,6 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { getReducer } from './get-reducer'
 import { withDevTools, externalMiddleware} from './settings'
-// import { getCached } from '../local-storage/cached'
-// import { createReducer } from '../mediators/create-reducer'
 
 
 export let store = undefined

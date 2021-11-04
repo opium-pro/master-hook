@@ -2,7 +2,7 @@ import { localStorage } from './local-storage'
 import { mediators } from '../collector'
 
 
-export async function getCached(name: string) {
+export async function getCached(name: string, withMeta = false) {
   const cache = mediators[name]?.cache || {}
   const cachedState = {}
 
@@ -14,7 +14,7 @@ export async function getCached(name: string) {
 
     if (cache[key] === 0 || (then + cache[key] > now)) {
       if (value) {
-        cachedState[key] = value.body
+        cachedState[key] = withMeta ? value : value.body
       }
     } else {
       localStorage.removeItem(valueName)
