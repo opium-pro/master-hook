@@ -1,14 +1,14 @@
 {
   "name": "master-hook",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "Easy connect to Redux by hooks with caching",
   "author": "opium.pro",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run watch",
-    "watch": "npm run clear && nodemon -e ts,tsx -w ./src -x npm run build",
+    "watch": "nodemon -e ts,tsx -w ./src -x npm run build",
     "build": "tsc",
-    "publish": "npm run clear && npm run build && npm publish",
+    "release": "npm run clear && npm run build && npm publish",
     "clear": "rm -fr ./dist"
   },
   "dependencies": {
