@@ -45,10 +45,14 @@ export function constructor({
     return result
   }
 
-  const useSelectors = () => {
+  const useSelectors = (subscribe) => {
     const result = {}
     selectors && Object.keys(selectors).forEach(key => {
-      result[key] = useSelector(selectors[key])
+      if (subscribe === true || (Array.isArray(subscribe) && subscribe.includes(key))) {
+        result[key] = useSelector(selectors[key])
+      } else {
+        result[key] = selectors[key]()
+      }
     })
     
     return result
@@ -57,6 +61,6 @@ export function constructor({
   return (subscribe = true as string[] | boolean): any => ({
     ...useStorages(subscribe),
     ...useActions(),
-    ...useSelectors(),
+    ...useSelectors(subscribe),
   })
 }
