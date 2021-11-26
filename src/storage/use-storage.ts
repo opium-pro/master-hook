@@ -2,7 +2,7 @@ import { useMediator, useSubscribedMediator } from '../mediators/use-mediator'
 import { mediators } from '../collector'
 
 
-export function useStorage(name: string, subscribe?: boolean) {
+export function useStorage(name: string, subscribe?: any[] | boolean) {
   const mediator = mediators[name]
 
   if (!mediator) {
@@ -11,6 +11,6 @@ export function useStorage(name: string, subscribe?: boolean) {
   }
 
   return subscribe
-    ? useSubscribedMediator(mediator, name)
+    ? useSubscribedMediator(mediator, name, subscribe)
     : useMediator(mediator, name)
 }

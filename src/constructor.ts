@@ -25,14 +25,14 @@ export function constructor({
     : createStorage(storage, initialState, cache)
 
 
-  const useStorages = () => {
+  const useStorages = (subscribe) => {
     let result = {}
     if (Array.isArray(storage)) {
       storage.forEach(name => {
-        result[name] = useStorage(name, true)
+        result[name] = useStorage(name, subscribe)
       })
     } else {
-      result = useStorage(storage, true)
+      result = useStorage(storage, subscribe)
     }
     return result
   }
@@ -54,8 +54,8 @@ export function constructor({
     return result
   }
 
-  return (): any => ({
-    ...useStorages(),
+  return (subscribe = true as string[] | boolean): any => ({
+    ...useStorages(subscribe),
     ...useActions(),
     ...useSelectors(),
   })

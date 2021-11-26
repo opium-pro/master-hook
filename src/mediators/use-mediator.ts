@@ -3,14 +3,16 @@ import { setCachedIfAllowed } from '../local-storage/cached'
 import { useSelector } from 'react-redux'
 
 
-export function useSubscribedMediator(mediator, storageName?: string) {
+export function useSubscribedMediator(mediator, storageName?: string, subscribe?: any[] | boolean) {
   const hook = useMediator(mediator, storageName)
   const { get } = mediator
 
   Object.keys(get).forEach(key => {
-    hook[key] = useSelector(state => get[key]?.(state))
+    const hasInSubscription = subscribe === true || (Array.isArray(subscribe) && subscribe.includes(key))
+    if (hasInSubscription) {
+      hook[key] = useSelector(state => get[key]?.(state))
+    }
   })
-
   return hook
 }
 
