@@ -9,15 +9,22 @@ import * as mediators from './mediators'
 import * as actions from './actions'
 
 
-export type MasterHook = typeof constructor
-  & typeof selectors
-  & typeof storage
-  & typeof store
-  & typeof actions
-  & typeof localStorage
-  & typeof mediators
+export type MasterHook<
+  initialState = { [storageName: string]: any },
+  actions = { [actionName: string]: any },
+  selectors = { [selectorName: string]: any },
+  > =
+  (subscribe?: (keyof initialState)[]) => {
+    [actionKey in keyof actions]: actions[actionKey]
+  } & {
+      [selectorKey in keyof selectors]: selectors[selectorKey]
+    } & {
+      [initialKey in keyof initialState]: initialState[initialKey]
+    } & {
+      [initialKey in `set${Capitalize<string & keyof initialState>}`]: any
+    }
 
-const MasterHook: MasterHook = (constructor as MasterHook)
+export const MasterHook = constructor
 
 Object.keys(selectors).forEach((key) => MasterHook[key] = selectors[key])
 Object.keys(storage).forEach((key) => MasterHook[key] = storage[key])
@@ -27,7 +34,13 @@ Object.keys(localStorage).forEach((key) => MasterHook[key] = localStorage[key])
 Object.keys(mediators).forEach((key) => MasterHook[key] = mediators[key])
 
 
-export default MasterHook
+export default MasterHook as typeof constructor
+  & typeof selectors
+  & typeof storage
+  & typeof store
+  & typeof actions
+  & typeof localStorage
+  & typeof mediators
 
 export * from './selectors'
 export * from './storage'

@@ -3,11 +3,11 @@ import { createStorage } from './storage/create-storage'
 import { useAction } from './actions/use-action'
 import { useSelector } from './selectors'
 
-export interface MasterHookArgs {
+export type MasterHookArgs = {
   storage?: string | string[],
   actions?: { [key: string]: any },
   selectors?: { [key: string]: any },
-  initialState?: { [key: string]: any },
+  initialState: { [key: string]: any },
   cache?: { [key: string]: number },
 }
 
