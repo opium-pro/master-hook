@@ -8,13 +8,14 @@ import * as localStorage from './local-storage'
 import * as mediators from './mediators'
 import * as actions from './actions'
 
+export const MasterHook = constructor
 
 export type MasterHook<
   initialState = { [storageName: string]: any },
   actions = { [actionName: string]: any },
   selectors = { [selectorName: string]: any },
   > =
-  (subscribe?: (keyof initialState)[]) => {
+  (subscribe?: Array<keyof initialState | 'isPending'> | boolean) => {
     [actionKey in keyof actions]: actions[actionKey]
   } & {
       [selectorKey in keyof selectors]: selectors[selectorKey]
@@ -22,9 +23,10 @@ export type MasterHook<
       [initialKey in keyof initialState]: initialState[initialKey]
     } & {
       [initialKey in `set${Capitalize<string & keyof initialState>}`]: any
+    } & {
+      isPending?: boolean,
+      setIsPending?: (value?: boolean) => void,
     }
-
-export const MasterHook = constructor
 
 Object.keys(selectors).forEach((key) => MasterHook[key] = selectors[key])
 Object.keys(storage).forEach((key) => MasterHook[key] = storage[key])

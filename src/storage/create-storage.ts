@@ -7,7 +7,8 @@ let storageIndex = 0
 export async function createStorage(
   name: string,
   initialState,
-  cache?: { [key: string]: number }
+  cache?: { [key: string]: number },
+  defaultState = {},
 ) {
   !name && (name = 'masterhook-' + storageIndex++)
 
@@ -15,9 +16,11 @@ export async function createStorage(
     return mediators[name]
   }
 
-  const defaultState = { isPending: false }
+  Object.assign(defaultState, initialState, {
+    isPending: false 
+  })
 
-  const mediator = getMediator( name, { ...defaultState, ...initialState }, cache)
+  const mediator = getMediator( name, defaultState, cache)
   mediators[name] = mediator
 
   return () => useStorage(name, true)

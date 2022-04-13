@@ -4,7 +4,7 @@ import { useAction } from './actions/use-action'
 import { useSelector } from './selectors'
 
 export type MasterHookArgs = {
-  storage?: string | string[],
+  storage?: string | string[] | { [key: string]: any },
   actions?: { [key: string]: any },
   selectors?: { [key: string]: any },
   initialState: { [key: string]: any },
@@ -22,13 +22,19 @@ export function constructor({
 
   Array.isArray(storage)
     ? storage.forEach(name => createStorage(name, initialState, cache))
-    : createStorage(storage, initialState, cache)
+    : typeof storage === 'object'
+      ? Object.keys(storage).forEach(name => createStorage(name, initialState, cache, storage[name]))
+      : createStorage(storage, initialState, cache)
 
 
   const useStorages = (subscribe) => {
     let result = {}
     if (Array.isArray(storage)) {
       storage.forEach(name => {
+        result[name] = useStorage(name, subscribe)
+      })
+    } else if (typeof storage === 'object') {
+      Object.keys(storage).forEach(name => {
         result[name] = useStorage(name, subscribe)
       })
     } else {
@@ -54,7 +60,7 @@ export function constructor({
         result[key] = selectors[key]()
       }
     })
-    
+
     return result
   }
 
