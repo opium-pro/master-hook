@@ -15,7 +15,7 @@ export type MasterHook<
   actions = { [actionName: string]: any },
   selectors = { [selectorName: string]: any },
   > =
-  (subscribe?: Array<keyof initialState | 'isPending'> | boolean) => {
+  (subscribe?: Array<keyof initialState | keyof selectors | 'isPending'> | boolean) => {
     [actionKey in keyof actions]: actions[actionKey]
   } & {
       [selectorKey in keyof selectors]: selectors[selectorKey]
