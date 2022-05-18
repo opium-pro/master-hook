@@ -1,6 +1,6 @@
-import { constructor } from './constructor'
-
 // !!! Don't change import order
+import { constructor } from './constructor'
+import * as collector from './collector'
 import * as selectors from './selectors'
 import * as storage from './storage'
 import * as store from './store'
@@ -26,15 +26,11 @@ export type MasterHook<
     } & {
       isPending?: boolean,
       setIsPending?: (value?: boolean) => void,
+      patch?: (state: Partial<initialState>) => void,
+      reset?: (state?: Partial<initialState>) => void,
     }
 
-Object.keys(selectors).forEach((key) => MasterHook[key] = selectors[key])
-Object.keys(storage).forEach((key) => MasterHook[key] = storage[key])
-Object.keys(store).forEach((key) => MasterHook[key] = store[key])
-Object.keys(actions).forEach((key) => MasterHook[key] = actions[key])
-Object.keys(localStorage).forEach((key) => MasterHook[key] = localStorage[key])
-Object.keys(mediators).forEach((key) => MasterHook[key] = mediators[key])
-
+Object.assign(MasterHook, selectors, storage, store, actions, localStorage, mediators, collector)
 
 export default MasterHook as typeof constructor
   & typeof selectors
@@ -43,7 +39,9 @@ export default MasterHook as typeof constructor
   & typeof actions
   & typeof localStorage
   & typeof mediators
+  & typeof collector
 
+export * from './collector'
 export * from './selectors'
 export * from './storage'
 export * from './store'

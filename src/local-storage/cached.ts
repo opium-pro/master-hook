@@ -2,8 +2,7 @@ import { localStorage } from './local-storage'
 import { mediators } from '../collector'
 
 
-export async function getCached(name: string, withMeta = false) {
-  const cache = mediators[name]?.cache || {}
+export async function getCached(name: string, withMeta = false, cache = mediators[name]?.cache || {}) {
   const cachedState = {}
 
   for (const key in cache) {

@@ -2,6 +2,7 @@ import { makeDefaultActions } from './default-actions'
 import { actionCreator } from './action-creator'
 import { createReducer } from './create-reducer'
 import { mediators } from '../collector'
+// import { getCached } from '../local-storage'
 
 
 export interface Mediator {
@@ -74,6 +75,8 @@ export function getMediator (
     }),
     defaultActionHandlers,
   )
+
+  // const cached = await getCached(name, false, cache)
 
   return {
     set,
