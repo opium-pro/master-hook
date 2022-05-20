@@ -1,56 +1,19 @@
 [<- to the main page](https://github.com/opium-pro/master-hook)
 
-# Using Selectors
+# Using Typescript
 
-## 1. Create selectors
+You can specify types of your hook if you use Typescript
 
-```js
-// selectors.js
-
-import { createSelector, useStorage } from 'master-hook'
-
-export const mySelector = createSelector(
-  () => useStorage('hook-n1').value,
-
-  (value) => {
-    const newValue = value + 'opopop'
-    return newValue
-  }
-)
-```
-
-## 2. Pass selectors to hooks
-
-```js
-// hooks.js
+```ts
+// hooks.ts
 
 import { MasterHook } from 'master-hook'
-import { mySelector } from './selectors'
 
-export const useMyHook = MasterHook({
-  storage: 'hook-n1',
-  selectors: { mySelector },
-  initialState: { value: 'hoooook' },
-})
-```
+// Here you import your hook data
+import * as myHook from './my-hook'
 
-## 3. Get selectors from the hooks
-
-```jsx
-// component.jsx
-
-import React from 'react'
-import { useMyHook } from './hooks.js'
-
-export const Component = () => {
-  const { mySelector } = useMyHook()
-
-  return (
-    <div onClick={handleClick}>
-      {mySelector}
-    </div>
-  )
-}
+// Fot typesctipt, pass the types of your initialState, actions and selectors into MasterHook
+export const useMyHook = MasterHook(myHook) as MasterHook<typeof myHook.initialState, typeof myHook.actions, typeof myHook.selectors>
 ```
 
 ## See more:
@@ -59,13 +22,13 @@ export const Component = () => {
 ---
 * [Using Storages](https://github.com/opium-pro/master-hook/blob/master/docs/STORAGES.md)
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
-* [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md) [you are here]
+* [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
 * [Preventing Rerendering](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_RERENDER.md)
 * [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
-* [Typescript](https://github.com/opium-pro/master-hook/blob/master/docs/TYPESCRIPT.md)
+* [Typescript](https://github.com/opium-pro/master-hook/blob/master/docs/TYPESCRIPT.md) [you are here]
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/MIDDLEWARE.md)
 ---

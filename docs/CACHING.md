@@ -7,7 +7,7 @@ Just pass `cache` to MasterHook and specify how long the values have to be store
 ```js
 // hooks.js
 
-import MasterHook from 'master-hook'
+import { MasterHook } from 'master-hook'
 
 export const useMyHook = MasterHook({
   initialState: { value: 'hoooook' },
@@ -34,12 +34,12 @@ You may need this for `React Native`. Just pass `MasterHook.setLocalStorage`
 ```js
 // hooks.js
 
-import MasterHook from 'master-hook'
+import { MasterHook, setLocalStorage } from 'master-hook'
 
 // For example, we want to use this storage
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-MasterHook.setLocalStorage(AsyncStorage)
+setLocalStorage(AsyncStorage)
 // Done. Now `AsyncStorage` is being used by default
 
 export const useMyHook = MasterHook({
@@ -58,9 +58,11 @@ export const useMyHook = MasterHook({
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md) [you are here]
+* [Preventing Rerendering](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_RERENDER.md)
 * [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md)
 ---
+* [Typescript](https://github.com/opium-pro/master-hook/blob/master/docs/TYPESCRIPT.md)
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/MIDDLEWARE.md)
 ---

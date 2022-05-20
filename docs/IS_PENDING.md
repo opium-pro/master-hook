@@ -35,9 +35,11 @@ That's all. Now your storages will have `isPending: true` when `myAction` is in 
 * [Using Actions](https://github.com/opium-pro/master-hook/blob/master/docs/ACTIONS.md)
 * [Using Selectors](https://github.com/opium-pro/master-hook/blob/master/docs/SELECTORS.md)
 * [Caching](https://github.com/opium-pro/master-hook/blob/master/docs/CACHING.md)
+* [Preventing Rerendering](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_RERENDER.md)
 * [Preventing Actions](https://github.com/opium-pro/master-hook/blob/master/docs/PREVENT_ACTIONS.md)
 * [Autoset 'isPending'](https://github.com/opium-pro/master-hook/blob/master/docs/IS_PENDING.md) [you are here]
 ---
+* [Typescript](https://github.com/opium-pro/master-hook/blob/master/docs/TYPESCRIPT.md)
 * [Adding Reducers](https://github.com/opium-pro/master-hook/blob/master/docs/REDUCERS.md)
 * [Adding Middleware and DevTools](https://github.com/opium-pro/master-hook/blob/master/docs/MIDDLEWARE.md)
 ---
