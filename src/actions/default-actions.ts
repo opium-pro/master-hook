@@ -4,7 +4,7 @@ import { mediators } from '../collector'
 import { createAction } from './create-action'
 
 
-export function setIsPending(value, storeNames) {
+export function setIsPending(value, storeNames = Object.keys(mediators)) {
   for (const storageName of storeNames) {
     const { setIsPending } = useStorage(storageName)
     setIsPending(value)
@@ -12,7 +12,7 @@ export function setIsPending(value, storeNames) {
 }
 
 
-export function reset(value) {
+export function reset(value = undefined) {
   for (const storageName in mediators) {
     const { reset } = useStorage(storageName)
     if (!value) {
