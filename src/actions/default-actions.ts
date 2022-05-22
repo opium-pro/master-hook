@@ -12,6 +12,18 @@ export function setIsPending(value, storeNames) {
 }
 
 
+export function reset(value) {
+  for (const storageName in mediators) {
+    const { reset } = useStorage(storageName)
+    if (!value) {
+      reset()
+    } else if (storageName in value) {
+      reset(value?.[storageName])
+    }
+  }
+}
+
+
 export const setFromCache = createAction(async (name?: string) => {
   const stack = []
   if (name) {
