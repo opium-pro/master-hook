@@ -11,9 +11,9 @@ import * as actions from './actions'
 export const MasterHook = constructor
 
 export type MasterHook<
-  initialState = { [storageName: string]: any },
-  actions = { [actionName: string]: any },
-  selectors = { [selectorName: string]: any },
+  initialState = Record<string, any>,
+  actions = Record<string, any>,
+  selectors = Record<string, any>,
   > =
   (subscribe?: Array<keyof initialState | keyof selectors | 'isPending'> | boolean) => {
     [actionKey in keyof actions]: actions[actionKey]

@@ -2,23 +2,25 @@ import { useStorage } from './storage/use-storage'
 import { createStorage } from './storage/create-storage'
 import { useAction } from './actions/use-action'
 import { useSelector } from './selectors'
+import type { MasterHook } from './index'
 
-export type MasterHookArgs = {
-  storage?: string | string[] | { [key: string]: any },
-  actions?: { [key: string]: any },
-  selectors?: { [key: string]: any },
-  initialState: { [key: string]: any },
-  cache?: { [key: string]: number },
-}
-
-
-export function constructor({
-  storage,
-  initialState,
-  actions,
-  selectors,
-  cache,
-}: MasterHookArgs) {
+export function constructor<
+  initialState = Record<string, any>,
+  actions = Record<string, any>,
+  selectors = Record<string, any>,
+  >({
+    storage,
+    initialState,
+    actions,
+    selectors,
+    cache,
+  }: {
+    storage?: string | string[] | Record<string, any>,
+    actions?: actions,
+    selectors?: selectors,
+    initialState: initialState,
+    cache?: Record<string, any>,
+  }): MasterHook<initialState, actions, selectors> {
 
   Array.isArray(storage)
     ? storage.forEach(name => createStorage(name, initialState, cache))
@@ -64,7 +66,7 @@ export function constructor({
     return result
   }
 
-  return (subscribe = true as string[] | boolean): any => ({
+  return (subscribe = true): any => ({
     ...useStorages(subscribe),
     ...useActions(),
     ...useSelectors(subscribe),
