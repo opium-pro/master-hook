@@ -1,4 +1,4 @@
-import { TAction } from './action-creator'
+import { TAction } from './action-creator.js'
 
 const identity = (v: any) => v
 

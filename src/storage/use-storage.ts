@@ -1,5 +1,5 @@
-import { useMediator, useSubscribedMediator } from '../mediators/use-mediator'
-import { mediators } from '../collector'
+import { useMediator, useSubscribedMediator } from '../mediators/use-mediator.js'
+import { mediators } from '../collector.js'
 
 
 export function useStorage(name: string, subscribe?: any[] | boolean) {

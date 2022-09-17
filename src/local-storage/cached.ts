@@ -1,5 +1,5 @@
-import { localStorage } from './local-storage'
-import { mediators } from '../collector'
+import { localStorage } from './local-storage.js'
+import { mediators } from '../collector.js'
 
 
 export async function getCached(name: string, withMeta = false, cache = mediators[name]?.cache || {}) {

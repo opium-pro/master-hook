@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Provider as ReduxProvider } from 'react-redux'
-import { setFromCache } from '../actions/default-actions'
-import { getStore } from './get-store'
+import { setFromCache } from '../actions/default-actions.js'
+import { getStore } from './get-store.js'
 
 
 export function Provider({ children, ...props }: any) {

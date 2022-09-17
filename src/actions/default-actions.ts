@@ -1,7 +1,7 @@
-import { useStorage } from '../storage/use-storage'
-import { getCached } from '../local-storage/cached'
-import { mediators } from '../collector'
-import { createAction } from './create-action'
+import { useStorage } from '../storage/use-storage.js'
+import { getCached } from '../local-storage/cached.js'
+import { mediators } from '../collector.js'
+import { createAction } from './create-action.js'
 
 
 export function setIsPending(value, storeNames = Object.keys(mediators)) {

@@ -1,12 +1,12 @@
 // !!! Don't change import order
-import { constructor } from './constructor'
-import * as collector from './collector'
-import * as selectors from './selectors'
-import * as storage from './storage'
-import * as store from './store'
-import * as localStorage from './local-storage'
-import * as mediators from './mediators'
-import * as actions from './actions'
+import { constructor } from './constructor.js'
+import * as collector from './collector.js'
+import * as selectors from './selectors/index.js'
+import * as storage from './storage/index.js'
+import * as store from './store/index.js'
+import * as localStorage from './local-storage/index.js'
+import * as mediators from './mediators/index.js'
+import * as actions from './actions/index.js'
 
 export const MasterHook = constructor
 
@@ -41,10 +41,10 @@ export default MasterHook as typeof constructor
   & typeof mediators
   & typeof collector
 
-export * from './collector'
-export * from './selectors'
-export * from './storage'
-export * from './store'
-export * from './local-storage'
-export * from './mediators'
-export * from './actions'
+export * from './collector.js'
+export * from './selectors/index.js'
+export * from './storage/index.js'
+export * from './store/index.js'
+export * from './local-storage/index.js'
+export * from './mediators/index.js'
+export * from './actions/index.js'

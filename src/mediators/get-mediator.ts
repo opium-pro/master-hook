@@ -1,8 +1,8 @@
-import { makeDefaultActions } from './default-actions'
-import { actionCreator } from './action-creator'
-import { createReducer } from './create-reducer'
-import { mediators } from '../collector'
-// import { getCached } from '../local-storage'
+import { makeDefaultActions } from './default-actions.js'
+import { actionCreator } from './action-creator.js'
+import { createReducer } from './create-reducer.js'
+import { mediators } from '../collector.js'
+// import { getCached } from '../local-storage.js'
 
 
 export interface Mediator {

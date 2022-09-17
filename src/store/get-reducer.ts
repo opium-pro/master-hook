@@ -1,6 +1,6 @@
-import { mediators } from '../collector'
+import { mediators } from '../collector.js'
 import { combineReducers } from 'redux'
-import { externalReducers } from './settings'
+import { externalReducers } from './settings.js'
 
 
 export function getReducer() {

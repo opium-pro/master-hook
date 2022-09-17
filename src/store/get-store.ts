@@ -1,8 +1,8 @@
-import { mediators } from "../collector"
+import { mediators } from '../collector.js'
 import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose } from 'redux'
-import { getReducer } from './get-reducer'
-import { withDevTools, externalMiddleware} from './settings'
+import { getReducer } from './get-reducer.js'
+import { withDevTools, externalMiddleware} from './settings.js'
 
 
 export let store = undefined

@@ -1,5 +1,5 @@
-import { getStore } from '../store/get-store'
-import { setCachedIfAllowed } from '../local-storage/cached'
+import { getStore } from '../store/get-store.js'
+import { setCachedIfAllowed } from '../local-storage/cached.js'
 import { useSelector } from 'react-redux'
 
 

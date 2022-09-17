@@ -1,4 +1,4 @@
-import { setCachedIfAllowed, clearCache } from '../local-storage/cached'
+import { setCachedIfAllowed, clearCache } from '../local-storage/cached.js'
 
 
 export function makeDefaultActions(name, initialState, cache) {

@@ -1,8 +1,8 @@
-import { useStorage } from './storage/use-storage'
-import { createStorage } from './storage/create-storage'
-import { useAction } from './actions/use-action'
-import { useSelector } from './selectors'
-import type { MasterHook } from './index'
+import { useStorage } from './storage/use-storage.js'
+import { createStorage } from './storage/create-storage.js'
+import { useAction } from './actions/use-action.js'
+import { useSelector } from './selectors/index.js'
+import type { MasterHook } from './index.js'
 
 export function constructor<
   initialState = Record<string, any>,

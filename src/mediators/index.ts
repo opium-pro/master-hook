@@ -1,2 +1,2 @@
-export * from './get-mediator'
-export * from './use-mediator'
+export * from './get-mediator.js'
+export * from './use-mediator.js'

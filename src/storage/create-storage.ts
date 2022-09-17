@@ -1,6 +1,6 @@
-import { getMediator } from '../mediators/get-mediator'
-import { mediators } from '../collector'
-import { useStorage } from './use-storage'
+import { getMediator } from '../mediators/get-mediator.js'
+import { mediators } from '../collector.js'
+import { useStorage } from './use-storage.js'
 
 let storageIndex = 0
 

@@ -1,5 +1,5 @@
-import { setIsPending } from './default-actions'
-import { actions } from '../collector'
+import { setIsPending } from './default-actions.js'
+import { actions } from '../collector.js'
 
 
 export type ActionOptions = {

@@ -1,4 +1,4 @@
-import { mediators } from '../collector'
+import { mediators } from '../collector.js'
 
 
 export function getStorage(name) {

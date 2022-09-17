@@ -1,4 +1,4 @@
-import { useMediator } from '../mediators/use-mediator'
+import { useMediator } from '../mediators/use-mediator.js'
 
 
 export function useAction(action) {
