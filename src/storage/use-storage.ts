@@ -14,3 +14,5 @@ export function useStorage(name: string, subscribe?: any[] | boolean) {
     ? useSubscribedMediator(mediator, name, subscribe)
     : useMediator(mediator, name)
 }
+
+export const attachStorage = useStorage

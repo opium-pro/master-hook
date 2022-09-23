@@ -1,6 +1,6 @@
 {
   "name": "master-hook",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Easy connect to Redux by hooks with caching",
   "author": "opium.pro",
   "main": "dist/index.js",
